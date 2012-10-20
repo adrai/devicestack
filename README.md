@@ -6,7 +6,7 @@ devicestack
 
 # Installation
 
-    $ npm install ds
+    $ npm install devicestack
 
 
 # License
