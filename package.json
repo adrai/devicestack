@@ -1,0 +1,59 @@
+{
+  "name": "ds",
+  "version": "0.0.1",
+  "description": "devicestack",
+  "private": false,
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.1.x"
+  },
+  "directories": {
+    "lib": "./lib",
+    "util": "./util"
+  },
+  "dependencies": {
+    "eventemitter2": ">=0.4.10",
+    "serialport": ">=1.0.8",
+    "lodash": ">=0.8.2",
+    "node-uuid": ">=1.4.0",
+    "async": ">=0.1.22"
+  },
+  "devDependencies": {
+    "mocha": ">=1.0.1",
+    "expect.js": ">=0.1.2"
+  },
+  "scripts": {
+    "test": "mocha test/deviceTest.js && mocha test/connectionTest.js && mocha test/framehandlerTest.js && mocha test/deviceloaderTest.js && mocha test/deviceguiderTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:adrai/ds.git"
+  },
+  "keywords": [
+    "device",
+    "devicestack",
+    "stack",
+    "connection",
+    "communication",
+    "serialport",
+    "usb",
+    "framehandler",
+    "protocol",
+    "framing",
+    "batchprocessing",
+    "frame",
+    "batch",
+    "command",
+    "task"
+  ],
+  "author": "adrai",
+  "homepage": "https://github.com/adrai/ds",
+  "bugs": {
+    "url": "https://github.com/adrai/ds/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://raw.github.com/adrai/ds/master/licence"
+  }
+}
