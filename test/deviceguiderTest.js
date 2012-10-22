@@ -59,8 +59,7 @@ describe('DeviceGuider', function() {
 
             it('it should automatically connect plugged devices', function(done) {
 
-                deviceguider.once('connect', function(device, connection) {
-                    expect(device).to.be.an('object');
+                deviceguider.once('connect', function(connection) {
                     expect(connection).to.be.an('object');
 
                     done();
@@ -79,8 +78,7 @@ describe('DeviceGuider', function() {
 
             it('it should automatically connect the first plugged device by emitting connect', function(done) {
 
-                deviceguider.once('connect', function(device, connection) {
-                    expect(device).to.be.an('object');
+                deviceguider.once('connect', function(connection) {
                     expect(connection).to.be.an('object');
 
                     done();
@@ -91,8 +89,7 @@ describe('DeviceGuider', function() {
 
             it('it should automatically connect the first plugged device', function(done) {
 
-                deviceguider.autoconnectOne(function(err, device, connection) {
-                    expect(device).to.be.an('object');
+                deviceguider.autoconnectOne(function(err, connection) {
                     expect(connection).to.be.an('object');
 
                     done();
@@ -108,8 +105,8 @@ describe('DeviceGuider', function() {
 
             beforeEach(function(done) {
                 deviceguider.manualconnect(function() {
-                    deviceguider.once('connect', function(device, connection) {
-                        toDisconnect = device;
+                    deviceguider.once('connect', function(connection) {
+                        toDisconnect = connection.device;
 
                         done();
                     });
@@ -119,7 +116,7 @@ describe('DeviceGuider', function() {
 
             it('it should emit disconnect', function(done) {
 
-                deviceguider.once('disconnect', function(device, connection) {
+                deviceguider.once('disconnect', function(connection) {
                     done();
                 });
                 deviceguider.disconnectDevice(toDisconnect);
@@ -130,7 +127,7 @@ describe('DeviceGuider', function() {
 
                 it('it should call the callback', function(done) {
 
-                    deviceguider.disconnectDevice(toDisconnect, function(device, connection) {
+                    deviceguider.disconnectDevice(toDisconnect, function(connection) {
                         done();
                     });
 
@@ -146,7 +143,7 @@ describe('DeviceGuider', function() {
 
             beforeEach(function(done) {
                 deviceguider.manualconnect(function() {
-                    deviceguider.once('connect', function(device, connection) {
+                    deviceguider.once('connect', function(connection) {
                         toClose = connection;
 
                         done();
@@ -157,7 +154,7 @@ describe('DeviceGuider', function() {
 
             it('it should emit disconnect', function(done) {
 
-                deviceguider.once('disconnect', function(device, connection) {
+                deviceguider.once('disconnect', function(connection) {
                     done();
                 });
                 deviceguider.closeConnection(toClose.id);
@@ -168,7 +165,7 @@ describe('DeviceGuider', function() {
 
                 it('it should call the callback', function(done) {
 
-                    deviceguider.closeConnection(toClose.id, function(device, connection) {
+                    deviceguider.closeConnection(toClose.id, function(connection) {
                         done();
                     });
 
