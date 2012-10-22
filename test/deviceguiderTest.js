@@ -12,6 +12,8 @@ describe('DeviceGuider', function() {
             expect(deviceguider.manualconnect).to.be.a('function');
             expect(deviceguider.autoconnectOne).to.be.a('function');
             expect(deviceguider.connect).to.be.a('function');
+            expect(deviceguider.disconnectDevice).to.be.a('function');
+            expect(deviceguider.closeConnection).to.be.a('function');
 
         });
 
@@ -40,6 +42,8 @@ describe('DeviceGuider', function() {
                     expect(currentState.connectOne).to.be.a('boolean');
                     expect(currentState.getDevice).to.be.a('function');
                     expect(currentState.getConnection).to.be.a('function');
+                    expect(currentState.getDeviceByConnection).to.be.a('function');
+                    expect(currentState.getConnectionByDevice).to.be.a('function');
                     done();
                 });
 
@@ -92,6 +96,82 @@ describe('DeviceGuider', function() {
                     expect(connection).to.be.an('object');
 
                     done();
+                });
+
+            });
+
+        });
+
+        describe('calling disconnectDevice', function() {
+
+            var toDisconnect;
+
+            beforeEach(function(done) {
+                deviceguider.manualconnect(function() {
+                    deviceguider.once('connect', function(device, connection) {
+                        toDisconnect = device;
+
+                        done();
+                    });
+                    deviceguider.autoconnect();
+                });
+            });
+
+            it('it should emit disconnect', function(done) {
+
+                deviceguider.once('disconnect', function(device, connection) {
+                    done();
+                });
+                deviceguider.disconnectDevice(toDisconnect);
+
+            });
+
+            describe('with a callback', function() {
+
+                it('it should call the callback', function(done) {
+
+                    deviceguider.disconnectDevice(toDisconnect, function(device, connection) {
+                        done();
+                    });
+
+                });
+
+            });
+
+        });
+
+        describe('calling closeConnection with the id', function() {
+
+            var toClose;
+
+            beforeEach(function(done) {
+                deviceguider.manualconnect(function() {
+                    deviceguider.once('connect', function(device, connection) {
+                        toClose = connection;
+
+                        done();
+                    });
+                    deviceguider.autoconnect();
+                });
+            });
+
+            it('it should emit disconnect', function(done) {
+
+                deviceguider.once('disconnect', function(device, connection) {
+                    done();
+                });
+                deviceguider.closeConnection(toClose.id);
+
+            });
+
+            describe('with a callback', function() {
+
+                it('it should call the callback', function(done) {
+
+                    deviceguider.closeConnection(toClose.id, function(device, connection) {
+                        done();
+                    });
+
                 });
 
             });
