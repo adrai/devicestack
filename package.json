@@ -1,7 +1,7 @@
 {
   "name": "devicestack",
   "version": "0.0.1",
-  "description": "devicestack",
+  "description": "All you need to implement a device protocol.",
   "private": false,
   "main": "index.js",
   "engines": {
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:adrai/ds.git"
+    "url": "git@github.com:adrai/devicestack.git"
   },
   "keywords": [
     "device",
@@ -48,12 +48,12 @@
     "task"
   ],
   "author": "adrai",
-  "homepage": "https://github.com/adrai/ds",
+  "homepage": "https://github.com/adrai/devicestack",
   "bugs": {
-    "url": "https://github.com/adrai/ds/issues"
+    "url": "https://github.com/adrai/devicestack/issues"
   },
   "license": {
     "type": "MIT",
-    "url": "https://raw.github.com/adrai/ds/master/licence"
+    "url": "https://raw.github.com/adrai/devicestack/master/licence"
   }
 }
