@@ -288,6 +288,66 @@ This module helps you to represent a device and its protocol.
 	module.exports = new MyDeviceGuider();
 
 
+## And now?
+
+	var myDeviceguider = require('./deviceguider');
+
+	myDeviceguider.on('err', function(err) {
+	    if (err) { console.log(err); return process.exit(); }
+	});
+
+	myDeviceguider.on('plug', function(device) {
+	    console.log('\n--->>> plugged a device\n');
+	});
+
+	myDeviceguider.on('unplug', function(device) {
+	    console.log('\n--->>> unplugged a device\n');
+	});
+
+	myDeviceguider.on('connect', function(connection) {
+	    console.log('\n--->>> connected a device\n');
+
+	    connection.executeCommand(/* your stuff */, callback);
+	});
+	
+	myDeviceguider.on('disconnect', function(connection) {
+	    console.log('\n--->>> disconnected a device\n');
+	});
+
+	myDeviceguider.getCurrentState(function(err, currentState) {
+	    if (currentState.plugged.length === 0) { console.log('No devices found!'); /*return process.exit();*/ }
+	});
+
+
+
+	// V1: autoconnect first device...
+	myDeviceguider.on('connect', function(device, connection) {
+	    // when first device connected...
+	});
+	myDeviceguider.autoconnectOne([function(err, device, connection) {}]);
+	myDeviceguider.stopautoconnecting(); // will stop autoconnecting and will disconnect connected device
+
+	// V2: autoconnect all devices...
+	myDeviceguider.on('connect', function(device, connection) {
+	    // when a device connected...
+	});
+	myDeviceguider.autoconnect();
+	myDeviceguider.stopautoconnecting(); // will stop autoconnecting and will disconnect all connected devices
+
+	// V3: manualconnect devices...
+	myDeviceguider.on('plug', function(device) {
+	    // when a device ready to be connected...
+	    device.connect(function(err, connection) {
+	        // device connected...
+	    });
+	});
+
+	// V4: manualconnect a device with port...
+	myDeviceguider.on('connect', function(device, connection) {
+	    // when first device connected...
+	});
+	myDeviceguider.connect(port[, function(err, device, connection) {}]);
+
 
 # License
 
