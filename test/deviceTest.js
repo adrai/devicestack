@@ -16,6 +16,9 @@ describe('Device', function() {
                 expect(device.open).to.be.a('function');
                 expect(device.close).to.be.a('function');
                 expect(device.send).to.be.a('function');
+                expect(device.set).to.be.a('function');
+                expect(device.get).to.be.a('function');
+                expect(device.toJSON).to.be.a('function');
 
             });
 
