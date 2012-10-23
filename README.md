@@ -26,9 +26,8 @@ This module helps you to represent a device and its protocol.
 
 ## Start from the device
 
-	var Device = require('../../index').Device
-	  , util = require('util')
-	  , _ = require('lodash');
+	var Device = require('devicestack').Device
+	  , util = require('util');
 
 	function MyDevice() {
 	    // call super class
@@ -63,6 +62,231 @@ This module helps you to represent a device and its protocol.
 	};
 
 	module.exports = MyDevice;
+
+### If it's a serial device extend from SerialDevice
+
+	var SerialDevice = require('devicestack').SerialDevice
+	  , util = require('util');
+
+	function MyDevice(port) {
+	    // call super class
+	    SerialDevice.call(this,
+	        port, 
+	        {
+	            baudrate: 38400,
+	            databits: 8,
+	            stopbits: 1,
+	            parity: 'none'
+	        }
+	    );
+	}
+
+	util.inherits(MyDevice, SerialDevice);
+
+	module.exports = MyDevice;
+
+
+## Continue with the framehandler(s)
+
+	var FrameHandler = require('devicestack').FrameHandler
+	  , util = require('util');
+
+	function MyFrameHandler(device) {
+	    // call super class
+	    FrameHandler.call(this, device);
+	}
+
+	util.inherits(MyFrameHandler, FrameHandler);
+
+	MyFrameHandler.prototype.analyzeNextFrame = function(incomming) {
+	    return incomming.splice(0);
+	};
+
+	MyFrameHandler.prototype.unwrapFrame = function(frame) {
+	    return frame;
+	};
+
+	MyFrameHandler.prototype.wrapFrame = function(frame) {
+	    return frame;
+	};
+
+	module.exports = MyFrameHandler;
+
+
+## Now build your stack with the device and the framehandler(s) defining a connection
+
+	var Connection = require('devicestack').Connection
+	  , util = require('util')
+	  , FrameHandler = require('./framehandler');
+
+	function MyConnection(device) {
+	    // call super class
+	    Connection.call(this, device);
+
+	    this.frameHandler = new FrameHandler(this.device);
+	    this.frameHandler.on('receive', function (frame) {
+	        // forward to appropriate command...
+	    });
+	}
+
+	util.inherits(MyConnection, Connection);
+
+	// define if needed
+	MyConnection.prototype.onConnecting = function(callback) {
+	    // Need to send some commands before definitely connected?
+	    if (callback) callback();
+	};
+
+	// define if needed
+	MyConnection.prototype.onDisconnecting = function(callback) {
+	    // Need to send some commands before definitely closed?
+	    if (callback) callback();
+	};
+
+	MyConnection.prototype.executeCommand = function(commandData, callback) {
+	    this.frameHandler.send('send', commandData);
+	};
+
+	module.exports = MyConnection;
+
+### Don't forget to extend the device with the connection
+
+	var Device = require('devicestack').Device
+	  , util = require('util')
+	  , Connection = require('./connection'); // this line...
+
+	function MyDevice() {
+	    // call super class
+	    Device.call(this, Connection);  // ...and this line
+	}
+
+	util.inherits(MyDevice, Device);
+
+	MyDevice.prototype.open = function(callback) {
+	    var self = this;
+
+	    setTimeout(function() {
+	        self.emit('open', callback);
+	        if (!self.connection && callback) callback();
+	    }, 10);
+
+	    this.on('send', function(data) {
+	        setTimeout(function() {
+	            self.emit('receive', data);
+	        }, 5);
+	    });
+	};
+
+	MyDevice.prototype.close = function(callback, fire) {
+	    var self = this;
+
+	    setTimeout(function() {
+	        self.emit('close', callback);
+	        self.removeAllListeners();
+	        if (callback && (!self.connection || fire)) callback(null);
+	    }, 10);
+	};
+
+	module.exports = MyDevice;
+
+### If it's a serial device...
+
+	var SerialDevice = require('devicestack').SerialDevice
+	  , util = require('util')
+	  , Connection = require('./connection'); // this line...;
+
+	function MyDevice(port) {
+	    // call super class
+	    SerialDevice.call(this,
+	        port, 
+	        {
+	            baudrate: 38400,
+	            databits: 8,
+	            stopbits: 1,
+	            parity: 'none'
+	        },
+	        Connection // ...and this line
+	    );
+	}
+
+	util.inherits(MyDevice, SerialDevice);
+
+	module.exports = MyDevice;
+
+
+## Let's lookup
+
+	var DeviceLoader = require('devicestack').DeviceLoader
+	  , util = require('util')
+	  , Device = require('./device');
+
+	function MyDeviceLoader() {
+	    // call super class
+	    DeviceLoader.call(this);
+	}
+
+	util.inherits(MyDeviceLoader, DeviceLoader);
+
+	MyDeviceLoader.prototype.lookup = function(callback) {
+	    var devices =  = [
+	        new Device(),
+	        new Device()
+	    ];
+	    try {
+	        this.emit('lookup');
+	    } catch(e) {
+	    }
+	    callback(null, devices);
+	};
+
+	module.exports = new MyDeviceLoader();
+
+### If it's a serial device extend from serialdeviceloader...
+
+	var SerialDeviceLoader = require('devicestack').SerialDeviceLoader
+	  , _ = require('lodash')
+	  , util = require('util')
+	  , Device = require('./device');
+
+	function MyDeviceLoader() {
+	    // call super class
+	    MyDeviceLoader.call(this, Device);
+	}
+
+	util.inherits(MyDeviceLoader, SerialDeviceLoader);
+
+	MyDeviceLoader.prototype.filter = function(ports) {
+	    var resPorts = _.filter(ports, function(item) {
+	        if (process.platform == 'win32') {
+	            return item.pnpId.indexOf('VID_1234+PID_5678') >= 0;
+	        } else if (process.platform == 'darwin') {
+	            return item.productId === '0x5678' && item.vendorId === '0x1234';
+	        } else {
+	            return item.pnpId.indexOf('MyDeviceIdentification') >= 0;
+	        }
+	    });
+	    return resPorts;
+	};
+
+	module.exports = new MyDeviceLoader();
+
+
+## And finally help with a guider
+
+	var DeviceGuider = require('devicestack').DeviceGuider
+	  , util = require('util')
+	  , deviceLoader = require('./deviceloader');
+
+	function MyDeviceGuider() {
+
+	    // call super class
+	    DeviceGuider.call(this, deviceLoader);
+	}
+
+	util.inherits(MyDeviceGuider, DeviceGuider);
+
+	module.exports = new MyDeviceGuider();
+
 
 
 # License

@@ -10,7 +10,4 @@ function MyDeviceGuider() {
 
 util.inherits(MyDeviceGuider, DeviceGuider);
 
-// MyDeviceGuider.prototype.filter = function(ports) {
-// };
-
 module.exports = new MyDeviceGuider();
