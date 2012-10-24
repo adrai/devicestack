@@ -41,9 +41,7 @@ describe('DeviceGuider', function() {
                 deviceguider.getCurrentState(function(err, currentState) {
                     expect(currentState.plugged).to.be.an('array');
                     expect(currentState.connected).to.be.an('array');
-                    expect(currentState.connectionMode).to.be.an('object');
-                    expect(currentState.connectionMode.doAutoconnect).to.be.a('boolean');
-                    expect(currentState.connectionMode.connectOne).to.be.a('boolean');
+                    expect(currentState.connectionMode).to.be.a('string');
                     expect(currentState.getDevice).to.be.a('function');
                     expect(currentState.getConnection).to.be.a('function');
                     expect(currentState.getDeviceByConnection).to.be.a('function');
@@ -61,81 +59,33 @@ describe('DeviceGuider', function() {
                 deviceguider.manualconnect(done);
             });
 
-            describe('with an object changing the mode', function() {
+            describe('changing the mode', function() {
 
                 it('it should emit connectionModeChanged', function(done) {
 
-                    var obj = {
-                        doAutoconnect: true,
-                        connectOne: false
-                    };
-
                     deviceguider.once('connectionModeChanged', function(connectionMode) {
-                        expect(connectionMode.doAutoconnect).to.eql(obj.doAutoconnect);
-                        expect(connectionMode.connectOne).to.eql(obj.connectOne);
+                        expect(connectionMode).to.eql('autoconnect');
                         done();
                     });
 
-                    deviceguider.changeConnectionMode(obj);
+                    deviceguider.changeConnectionMode('autoconnect');
 
                 });
 
                 it('it should return true', function() {
 
-                    var obj = {
-                        doAutoconnect: true,
-                        connectOne: false
-                    };
-
-                    var result = deviceguider.changeConnectionMode(obj);
+                    var result = deviceguider.changeConnectionMode('autoconnect');
                     expect(result).to.eql(true);
 
                 });
 
             });
 
-            describe('with an object not changing the mode', function() {
-
-                it('it should return false', function() {
-
-                    var obj = {
-                        doAutoconnect: false
-                    };
-                    
-                    var result = deviceguider.changeConnectionMode(obj);
-                    expect(result).to.eql(false);
-
-                });
-
-            });
-
-            describe('with a property setter changing the mode', function() {
-
-                it('it should emit connectionModeChanged', function(done) {
-
-                    deviceguider.once('connectionModeChanged', function(connectionMode) {
-                        expect(connectionMode.doAutoconnect).to.eql(true);
-                        done();
-                    });
-
-                    deviceguider.changeConnectionMode('doAutoconnect', true);
-
-                });
-
-                it('it should return true', function() {
-
-                    var result = deviceguider.changeConnectionMode('doAutoconnect', true);
-                    expect(result).to.eql(true);
-
-                });
-
-            });
-
-            describe('with a property setter not changing the mode', function() {
+            describe('not changing the mode', function() {
 
                 it('it should return false', function() {
                     
-                    var result = deviceguider.changeConnectionMode('doAutoconnect', false);
+                    var result = deviceguider.changeConnectionMode('manualconnect');
                     expect(result).to.eql(false);
 
                 });
