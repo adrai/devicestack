@@ -18,6 +18,7 @@
 
 This module helps you to represent a device and its protocol.
 
+
 # Installation
 
     npm install devicestack
