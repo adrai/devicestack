@@ -1,6 +1,6 @@
 {
   "name": "devicestack",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This module helps you to represent a device and its protocol.",
   "private": false,
   "main": "index.js",
