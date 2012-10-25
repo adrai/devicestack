@@ -20,20 +20,6 @@ describe('DeviceGuider', function() {
 
         });
 
-        describe('having plugged devices', function() {
-
-            it('it should emit plug', function(done) {
-
-                deviceguider.once('plug', function(device) {
-                    expect(device).to.be.an('object');
-                    
-                    done();
-                });
-
-            });
-
-        });
-
         describe('calling getCurrentState', function() {
 
             it('it should callback the correct object', function(done) {
@@ -133,6 +119,7 @@ describe('DeviceGuider', function() {
             it('it should automatically connect the first plugged device', function(done) {
 
                 deviceguider.autoconnectOne(function(err, connection) {
+                    expect(connection).to.be.ok(err);
                     expect(connection).to.be.an('object');
 
                     done();

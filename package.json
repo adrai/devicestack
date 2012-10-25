@@ -24,7 +24,7 @@
     "expect.js": ">=0.1.2"
   },
   "scripts": {
-    "test": "mocha test/deviceTest.js && mocha test/connectionTest.js && mocha test/framehandlerTest.js && mocha test/deviceloaderTest.js && mocha test/deviceguiderTest.js"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",

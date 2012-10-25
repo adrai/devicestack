@@ -1,5 +1,5 @@
 var expect = require('expect.js')
-  , deviceloader = require('./fixture/deviceloader');
+  , deviceloader = require('./fixture/deviceloader').create();
 
 describe('DeviceLoader', function() {
 

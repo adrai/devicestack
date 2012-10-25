@@ -9,6 +9,8 @@ function MyDeviceLoader() {
     // call super class
     DeviceLoader.call(this);
 
+    this.Device = Device;
+
     this.startDevices = [
         new Device(),
         new Device()
@@ -27,3 +29,6 @@ MyDeviceLoader.prototype.lookup = function(callback) {
 };
 
 module.exports = new MyDeviceLoader();
+module.exports.create = function() {
+    return new MyDeviceLoader();
+};

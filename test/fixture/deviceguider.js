@@ -1,11 +1,10 @@
 var DeviceGuider = require('../../index').DeviceGuider
-  , util = require('util')
-  , deviceLoader = require('./deviceloader');
+  , util = require('util');
 
 function MyDeviceGuider() {
 
     // call super class
-    DeviceGuider.call(this, deviceLoader);
+    DeviceGuider.call(this, require('./deviceloader').create());
 }
 
 util.inherits(MyDeviceGuider, DeviceGuider);
