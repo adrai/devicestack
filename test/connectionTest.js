@@ -9,9 +9,12 @@ describe('Connection', function() {
 
     describe('creating a connection object', function() {
 
+        beforeEach(function() {
+            connection = new Connection(device);
+        });
+
         it('it should have all expected values', function() {
 
-            connection = new Connection(device);
             expect(connection.id).to.be.a('string');
             expect(connection.close).to.be.a('function');
             expect(connection.executeCommand).to.be.a('function');
