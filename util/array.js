@@ -21,13 +21,11 @@ if (!Array.prototype.toBuffer) {
 
 if (!Array.prototype.toNumber) {
     Array.prototype.toNumber = function() {
-        var val = 0;
-        for (var i = 0; i < this.length; ++i) {        
-            val += this[i];        
-            if (i < this.length - 1) {
-                val = val << 8;
-            }
+        var value = 0;
+        for ( var i = 0; i < this.length; i++) {
+            value = (value * 256) + this[i];
         }
-        return val;
+
+        return value;
     };
 }
