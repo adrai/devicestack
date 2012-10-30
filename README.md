@@ -106,11 +106,17 @@ Connection will be created from connect of device.
 - reacts on closing of device and calls close on device
 - reacts on close of device and cleans up
 
+In extended constuctor create the framehandler(s) and subscribe to receive on the last framehandler.
+
 ### close
 Implement the close mechanism.
-Call with optional callback. On closing emit 'disconnecting', call `onDisconnecting` functio if exists and call close on device by passing the callback.
+Call with optional callback. On closing emit 'disconnecting', call `onDisconnecting` function if exists, on disconnected emit 'disconnect' and call close on device by passing the callback.
 
 - If extending from `require('devicestack').Connection` this mechanism is already defined!
+
+### executeCommand
+Implement the executeCommand mechanism.
+Call with commandData and optional callback.
 
 ### onConnecting
 Define `onConnecting` function if you need to send some commands before definitely connected?
@@ -118,7 +124,40 @@ Define `onConnecting` function if you need to send some commands before definite
 ### onDisconnecting
 Define `onDisconnecting` function if you need to send some commands before definitely disconnected?
 
+
 ## framehandler(s)
+You can have one or multiple framehandlers. A framhandler receives data from the upper layer and sends it to the lower layer by wrapping some header or footer information. A framehandler receives data from lower layer and sends it to the upper layer by unwrapping some header or footer information. The lowest layer for a framehandler is the device and the topmost ist the connection.
+
+- reacts on send of upper layer, calls `wrapFrame` function if exists and calls `send` function on lower layer
+- reacts on receive of lower layer, calls `unwrapFrame` function if exists and emits `receive`
+- automatically calls `start` function
+
+### start
+Only starts if `analyzeNextFrame` function is defined. Creates an interval that calls `analyzeNextFrame` function.
+
+- If extending from `require('devicestack').FrameHandler` this mechanism is already defined!
+
+### stop
+Stops the interval that calls `analyzeNextFrame` function.
+
+- If extending from `require('devicestack').FrameHandler` this mechanism is already defined!
+
+### send
+Call send or emit 'send' on the device with a byte array.
+
+- If extending from `require('devicestack').FrameHandler` this mechanism is already defined!
+
+### analyzeNextFrame
+Implement the analyzeNextFrame mechanism that returns a frame as byte array or null of no frame found.
+Call with current incomming buffer.
+
+### wrapFrame
+Define `wrapFrame` function if you need to wrap frames?
+
+### unwrapFrame
+Define `unwrapFrame` function if you need to unwrap frames?
+
+
 ## deviceloader
 ## deviceguider
 ## commands
