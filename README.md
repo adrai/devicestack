@@ -184,38 +184,61 @@ Call with optional callback and call callback with an array of devices.
 
 
 ## deviceguider
+A deviceguider emits 'plug' for new attached devices, 'unplug' for removed devices, emits 'connect' for connected devices and emits 'disconnect' for disconnected devices.
 
 ### getCurrentState
+Call with callback and it calls the callback with the current state, containing the connectionMode, the list of plugged devices and the list of connected devices.
+
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### autoconnect
+Call without arguments it emits 'connectionModeChanged'. When plugging a device it will now automatically connect it and emit 'connect'. Already plugged devices will connect immediately.
+
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### autoconnectOne
+Call with optional callback it emits 'connectionModeChanged'. When plugging one device it will now automatically connect one and emit 'connect'. If there is already a plugged device, it will connect immediately and call the callback.
+
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### manualconnect
+Call with optional holdConnections flag and optional callback it emits 'connectionModeChanged'. When plugging a device it will not connect it. Dependent on the holdConnections flag already connected devices will disconnect immediately and call the callback.
+
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### connectDevice
+Call with the deviceId or the device and optional callback it will connect that device and call the callback.
+
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### disconnectDevice
+Call with the deviceId or the device and optional callback it will disconnect that device and call the callback.
+
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### closeConnection
+Call with the connectionId or the connection and optional callback it will close that connection and call the callback.
+
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### checkConnectionMode
+Call with a connectionMode value it checks if the connectionMode will change and returns true or false.
+
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### changeConnectionMode
+Call with a connectionMode value it checks if the connectionMode will change and emits 'connectionModeChanged'.
+
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### connect
+Call with the portname and optional callback it will connect that device and call the callback.
+
 - If extending from `require('devicestack').SerialDeviceGuider` this mechanism is already defined!
 
 ### disconnect
+Call with the portname and optional callback it will disconnect that device and call the callback.
+
 - If extending from `require('devicestack').SerialDeviceGuider` this mechanism is already defined!
 
 
