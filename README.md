@@ -100,6 +100,24 @@ example:
 
 
 ## connection
+Connection will be created from connect of device.
+
+- reacts on open of device, calls `onConnecting` function if exists and emits 'connecting' and 'connect'
+- reacts on closing of device and calls close on device
+- reacts on close of device and cleans up
+
+### close
+Implement the close mechanism.
+Call with optional callback. On closing emit 'disconnecting', call `onDisconnecting` functio if exists and call close on device by passing the callback.
+
+- If extending from `require('devicestack').Connection` this mechanism is already defined!
+
+### onConnecting
+Define `onConnecting` function if you need to send some commands before definitely connected?
+
+### onDisconnecting
+Define `onDisconnecting` function if you need to send some commands before definitely disconnected?
+
 ## framehandler(s)
 ## deviceloader
 ## deviceguider
