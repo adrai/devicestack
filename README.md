@@ -159,6 +159,27 @@ Define `unwrapFrame` function if you need to unwrap frames?
 
 
 ## deviceloader
+A deviceloader can check if there are available some devices.
+
+### startLookup
+Creates an interval that calls `trigger` function.
+Call with optional interval in milliseconds and optional callback.
+
+- If extending from `require('devicestack').DeviceLoader` this mechanism is already defined!
+
+### stopLookup
+Stops the interval that calls `trigger` function.
+
+- If extending from `require('devicestack').DeviceLoader` this mechanism is already defined!
+
+### trigger
+Calls `lookup` function with optional callback and emits 'plug' for new attached devices and 'unplug' for removed devices.
+
+- If extending from `require('devicestack').DeviceLoader` this mechanism is already defined!
+
+### lookup
+Call with optional callback and call callback with an array of devices.
+
 ## deviceguider
 ## commands
 ## tasks
