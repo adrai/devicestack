@@ -17,3 +17,4 @@ index.FrameHandler = require('./lib/framehandler');
 index.DeviceLoader = require('./lib/deviceloader');
 index.SerialDeviceLoader = require('./lib/serialdeviceloader');
 index.DeviceGuider = require('./lib/deviceguider');
+index.SerialDeviceGuider = require('./lib/serialdeviceguider');

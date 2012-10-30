@@ -180,9 +180,28 @@ Calls `lookup` function with optional callback and emits 'plug' for new attached
 ### lookup
 Call with optional callback and call callback with an array of devices.
 
+
 ## deviceguider
+
+### getCurrentState
+### autoconnect
+### manualconnect
+### autoconnectOne
+### connectDevice
+### disconnectDevice
+### closeConnection
+### checkConnectionMode
+### changeConnectionMode
+### connect
+### disconnect
+
+
 ## commands
+
+
 ## tasks
+
+
 
 # Installation
 

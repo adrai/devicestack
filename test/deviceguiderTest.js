@@ -11,8 +11,6 @@ describe('DeviceGuider', function() {
             expect(deviceguider.autoconnect).to.be.a('function');
             expect(deviceguider.manualconnect).to.be.a('function');
             expect(deviceguider.autoconnectOne).to.be.a('function');
-            expect(deviceguider.connect).to.be.a('function');
-            expect(deviceguider.disconnect).to.be.a('function');
             expect(deviceguider.disconnectDevice).to.be.a('function');
             expect(deviceguider.connectDevice).to.be.a('function');
             expect(deviceguider.closeConnection).to.be.a('function');
