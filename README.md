@@ -243,10 +243,39 @@ Call with the portname and optional callback it will disconnect that device and 
 
 
 ## commands
+Build your own commands looking like this:
 
+	function MyCommand(myValue) {
+	    this.cmd = 0x01;
+	    this.data = [myValue ? 0x01 : 0x00];
+	}
+
+	MyCommand.prototype.execute = function(connection, callback) {
+		connection.executeCommand(this, callback);
+	};
+
+	module.exports = MyCommand;
 
 ## tasks
+Build your own tasks looking like this:
 
+	var MyCommand = require('../commands/myCommand');
+
+	function MyTask() {
+		this.myCommand = new MyCommand();
+	}
+
+	MyTask.prototype.execute = function(connection, callback) {
+		this.myCommand.execute(connection, function(err, data) {
+			if (err) {
+	            return callback(err);
+	        }
+	        
+			callback(err, data);
+		});
+	};
+
+	module.exports = MyTask;
 
 
 # Installation
