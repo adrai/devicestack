@@ -11,10 +11,13 @@ index.VERSION = require('./package.json').version;
 require('./util/index');
 
 index.Device = require('./lib/device');
-index.SerialDevice = require('./lib/serialdevice');
 index.Connection = require('./lib/connection');
 index.FrameHandler = require('./lib/framehandler');
 index.DeviceLoader = require('./lib/deviceloader');
-index.SerialDeviceLoader = require('./lib/serialdeviceloader');
 index.DeviceGuider = require('./lib/deviceguider');
-index.SerialDeviceGuider = require('./lib/serialdeviceguider');
+
+try {
+	index.SerialDevice = require('./lib/serialdevice');
+	index.SerialDeviceLoader = require('./lib/serialdeviceloader');
+	index.SerialDeviceGuider = require('./lib/serialdeviceguider');
+} catch(e) { }
