@@ -18,6 +18,93 @@
 
 This module helps you to represent a device and its protocol.
 
+<pre>
+   ___________________________________________________   
+  |                                   |          |    |  
+  |                                   |   tasks  |    |  
+  |________________    deviceguider   |__________|    |  
+  |                |                  |               |  
+  |  deviceloader  |                  |   commands    |  
+  |________________|__________________|_______________|  
+  |                |               ___________________|  
+  |                |  connection  |                   |  
+  |     device     |______________|  framehandler(s)  |  
+  |                               |___________________|  
+  |                                                   |  
+  |___________________________________________________|  
+
+</pre>
+
+## device
+Device represents your physical device.
+
+### open
+Implement the open mechanism to your device.
+Call with optional callback. On opened emit 'open' and call the callback.
+
+- If extending from `require('devicestack').SerialDevice` this mechanism is already defined!
+
+### close
+Implement the close mechanism to your device.
+Call with optional callback. On closed emit 'close' and call the callback.
+
+- If extending from `require('devicestack').SerialDevice` this mechanism is already defined!
+
+### send
+Implement the send mechanism to your device by subscribing the 'send' event.
+Call send or emit 'send' on the device with a byte array.
+
+- If extending from `require('devicestack').Device` the send function is already defined!
+- If extending from `require('devicestack').SerialDevice` this mechanism is already defined!
+
+### receive
+Implement the receive mechanism from your device by emitting the 'receive' event.
+When you receive data from your device emit 'receive' with a byte array.
+
+- If extending from `require('devicestack').SerialDevice` this mechanism is already defined!
+
+### connect
+Implement the connect mechanism to your device.
+Call with optional callback. On connecting emit 'opening', create a new connection instance and call open by passing the callback.
+
+- If extending from `require('devicestack').Device` this mechanism is already defined!
+
+### disconnect
+Implement the disconnect mechanism to your device.
+Call with optional callback. On disconnecting emit 'closing' and call close by passing the callback.
+
+- If extending from `require('devicestack').Device` this mechanism is already defined!
+
+### set
+Sets attributes for the device.
+
+- If extending from `require('devicestack').Device` this mechanism is already defined!
+
+example:
+
+	device.set('firmwareVersion', '0.0.1');
+	// or
+	device.set({
+		firmwareVersion: '0.0.1',
+		bootloaderVersion: '0.0.1'
+	});
+
+### get
+Gets an attribute of the device.
+
+- If extending from `require('devicestack').Device` this mechanism is already defined!
+
+example:
+
+	device.get('firmwareVersion'); // returns '0.0.1'
+
+
+## connection
+## framehandler(s)
+## deviceloader
+## deviceguider
+## commands
+## tasks
 
 # Installation
 
