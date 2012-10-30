@@ -180,20 +180,43 @@ Calls `lookup` function with optional callback and emits 'plug' for new attached
 ### lookup
 Call with optional callback and call callback with an array of devices.
 
+- If extending from `require('devicestack').SerialDeviceLoader` this mechanism is already defined!
+
 
 ## deviceguider
 
 ### getCurrentState
+- If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
+
 ### autoconnect
-### manualconnect
+- If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
+
 ### autoconnectOne
+- If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
+
+### manualconnect
+- If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
+
 ### connectDevice
+- If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
+
 ### disconnectDevice
+- If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
+
 ### closeConnection
+- If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
+
 ### checkConnectionMode
+- If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
+
 ### changeConnectionMode
+- If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
+
 ### connect
+- If extending from `require('devicestack').SerialDeviceGuider` this mechanism is already defined!
+
 ### disconnect
+- If extending from `require('devicestack').SerialDeviceGuider` this mechanism is already defined!
 
 
 ## commands
