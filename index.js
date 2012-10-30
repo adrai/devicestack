@@ -6,7 +6,7 @@ if (typeof module.exports !== 'undefined') {
     index = root.index = {};
 }
 
-index.VERSION = '0.0.1';
+index.VERSION = require('./package.json').version;
 
 require('./util/index');
 
