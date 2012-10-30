@@ -18,3 +18,16 @@ if (!Array.prototype.toBuffer) {
         return new Buffer(this);
     };
 }
+
+if (!Array.prototype.toNumber) {
+    Array.prototype.toNumber = function() {
+        var val = 0;
+        for (var i = 0; i < this.length; ++i) {        
+            val += this[i];        
+            if (i < this.length - 1) {
+                val = val << 8;
+            }
+        }
+        return val;
+    };
+}
