@@ -14,10 +14,12 @@
   },
   "dependencies": {
     "eventemitter2": ">=0.4.10",
-    "serialport": ">=1.0.8",
     "lodash": ">=0.8.2",
     "node-uuid": ">=1.4.0",
     "async": ">=0.1.22"
+  },
+  "optionalDependencies": {
+    "serialport": ">=1.0.8"
   },
   "devDependencies": {
     "mocha": ">=1.0.1",
