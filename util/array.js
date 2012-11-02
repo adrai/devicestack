@@ -9,7 +9,7 @@ if (!Array.prototype.toHexDebug) {
             hex = hex.length < 2 ? '0' + hex : hex;
             res += hex;
         }
-        return res;
+        return res.toUpperCase();
     };
 }
 
