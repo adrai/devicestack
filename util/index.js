@@ -1,4 +1,4 @@
 require('./array');
 require('./buffer');
 require('./number');
-require('./enum').register();
+require('enum').register();
