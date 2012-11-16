@@ -36,6 +36,15 @@ var Enum = module.exports = function(map, options) {
     this._options = options || {};
     this._options.separator = this._options.separator || ' | ';
 
+    if (map.length) {
+        var array = map;
+        map = {};
+
+        for (var i = 0; i < array.length; i++) {
+            map[array[i]] = Math.pow(2, i);
+        }
+    }
+
     for (var member in map) {
         if ((this._options.name && member === 'name') || member === '_options' || member === 'get' || member === 'getKey' || member === 'getValue') {
             throw new Error('Enum key "' + member + '" is a reserved word!');
@@ -49,28 +58,20 @@ var Enum = module.exports = function(map, options) {
 };
 
 Enum.prototype.getKey = function(value) {
-    if (value instanceof EnumItem) {
-        return value.key;
+    var item = this.get(value);
+    if (item) {
+        return item.key;
     } else {
-        var item = this.get(value);
-        if (item) {
-            return item.key;
-        } else {
-            return 'Undefined';
-        }
+        return 'Undefined';
     }
 };
 
 Enum.prototype.getValue = function(key) {
-    if (key instanceof EnumItem) {
-        return key.value;
+    var item = this.get(key);
+    if (item) {
+        return item.value;
     } else {
-        var item = this.get(key);
-        if (item) {
-            return item.value;
-        } else {
-            return null;
-        }
+        return null;
     }
 };
 
@@ -119,6 +120,11 @@ Enum.prototype.get = function(key) {
     }
 };
 
-if (!global.Enum) {
-    global.Enum = Enum;
+if (global) {
+    Enum.register = function(key) {
+        key = key || 'Enum';
+        if (!global[key]) {
+            global[key] = Enum;
+        }
+    };
 }
