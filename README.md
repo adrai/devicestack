@@ -277,6 +277,37 @@ Build your own tasks looking like this:
 
 	module.exports = MyTask;
 
+## utils
+Some utility functions are shipped with this module.
+
+### array | toNumber
+Converts a byte array to a number.
+	[0x01, 0x00].toNumber() // returns 64
+
+### array | toBuffer
+Converts a byte array to a buffer object.
+	[0x01, 0x00].toBuffer()
+
+### array | toHexDebug
+Converts a byte array to a readable hex string.
+	[0x01, 0x00].toHexDebug() // returns '01-00'
+
+### buffer | toArray
+Converts a buffer object to a byte array.
+	(new Buffer([0x01, 0x00])).toArray() // returns [0x01, 0x00]
+
+### buffer | toHexDebug
+Converts a buffer object to a readable hex string.
+	(new Buffer([0x01, 0x00])).toHexDebug() // returns '01-00'
+
+### number | toArray
+Converts a number to a byte array.
+	64.toArray() // returns [0x01, 0x00]
+
+### enum
+The Enum type is automatically registered in node.js.
+For documentation look at [enum](https://github.com/adrai/enum).
+
 
 # Installation
 
