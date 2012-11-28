@@ -124,6 +124,29 @@ Define `onConnecting` function if you need to send some commands before definite
 ### onDisconnecting
 Define `onDisconnecting` function if you need to send some commands before definitely disconnected?
 
+### set
+Sets attributes for the connection.
+
+- If extending from `require('devicestack').Connection` this mechanism is already defined!
+
+example:
+
+	connection.set('firmwareVersion', '0.0.1');
+	// or
+	connection.set({
+		firmwareVersion: '0.0.1',
+		bootloaderVersion: '0.0.1'
+	});
+
+### get
+Gets an attribute of the connection.
+
+- If extending from `require('devicestack').Connection` this mechanism is already defined!
+
+example:
+
+	connection.get('firmwareVersion'); // returns '0.0.1'
+
 
 ## framehandler(s)
 You can have one or multiple framehandlers. A framhandler receives data from the upper layer and sends it to the lower layer by wrapping some header or footer information. A framehandler receives data from lower layer and sends it to the upper layer by unwrapping some header or footer information. The lowest layer for a framehandler is the device and the topmost ist the connection.

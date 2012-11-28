@@ -17,6 +17,9 @@ describe('Connection', function() {
 
             expect(connection.id).to.be.a('string');
             expect(connection.close).to.be.a('function');
+            expect(connection.set).to.be.a('function');
+            expect(connection.get).to.be.a('function');
+            expect(connection.toJSON).to.be.a('function');
             expect(connection.executeCommand).to.be.a('function');
 
         });
