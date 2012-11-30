@@ -1,4 +1,12 @@
 if (!Array.prototype.toHexDebug) {
+
+    /**
+     * Converts a "byte" array to a readable hex string.
+     * @return {String}       The result array.
+     * 
+     * @example:
+     *     [0x01, 0x00].toHexDebug(); // returns '01-00'
+     */
     Array.prototype.toHexDebug = function() {
         var res = '';
         for (var i = 0, len = this.length; i < len; i++) {
@@ -14,12 +22,28 @@ if (!Array.prototype.toHexDebug) {
 }
 
 if (!Array.prototype.toBuffer) {
+
+    /**
+     * Converts a "byte" array to a buffer object.
+     * @return {Buffer}       The result buffer object.
+     * 
+     * @example:
+     *     [0x01, 0x00].toBuffer();
+     */
     Array.prototype.toBuffer = function() {
         return new Buffer(this);
     };
 }
 
 if (!Array.prototype.toNumber) {
+
+    /**
+     * Converts a "byte" array to a number.
+     * @return {Number}       The result number.
+     * 
+     * @example:
+     *     [0x01, 0x00].toNumber(); // returns 64
+     */
     Array.prototype.toNumber = function() {
         var value = 0;
         for ( var i = 0; i < this.length; i++) {

@@ -1,4 +1,13 @@
 if (!Number.prototype.toArray) {
+
+    /**
+     * Converts a number to a "byte" array.
+     * @param  {Number} size The size of the array . [optional]
+     * @return {Array}       The result array.
+     * 
+     * @example:
+     *     64.toArray(); // returns [0x01, 0x00]
+     */
     Number.prototype.toArray = function(size) {
         if (!size) {
             if (this > 0xffffffffffff) {
