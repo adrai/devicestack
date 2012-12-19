@@ -663,6 +663,7 @@ For documentation look at [enum](https://github.com/adrai/enum).
 	myDeviceguider.connect(port[, function(err, device, connection) {}]);
 
 
+
 # License
 
 Copyright (c) 2012 Adriano Raiano
