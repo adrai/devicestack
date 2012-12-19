@@ -20,7 +20,7 @@
     "enum": ">=0.2.0"
   },
   "optionalDependencies": {
-    "serialport": ">=1.0.8"
+    "serialport": "git+ssh://git@github.com:adrai/node-serialport.git"
   },
   "devDependencies": {
     "mocha": ">=1.0.1",
