@@ -20,7 +20,7 @@
     "enum": ">=0.2.0"
   },
   "optionalDependencies": {
-    "serialport": "git+ssh://git@github.com:adrai/node-serialport.git"
+    "serialport": "https://github.com/adrai/node-serialport/tarball/master"
   },
   "devDependencies": {
     "mocha": ">=1.0.1",
