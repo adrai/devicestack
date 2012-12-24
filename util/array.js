@@ -2,7 +2,7 @@ if (!Array.prototype.toHexDebug) {
 
     /**
      * Converts a "byte" array to a readable hex string.
-     * @return {String}       The result array.
+     * @return {String}       The result string.
      * 
      * @example:
      *     [0x01, 0x00].toHexDebug(); // returns '01-00'

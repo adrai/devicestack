@@ -327,6 +327,10 @@ Converts a buffer object to a readable hex string.
 Converts a number to a byte array.
 	64.toArray() // returns [0x01, 0x00]
 
+### string | toArray
+Converts a hex string to a byte array.
+	'0100'.toArray() // returns [0x01, 0x00]
+
 ### enum
 The Enum type is automatically registered in node.js.
 For documentation look at [enum](https://github.com/adrai/enum).
