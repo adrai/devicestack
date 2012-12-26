@@ -14,9 +14,8 @@ if (!String.prototype.toArray) {
         }
         var result = [];
         for (var i = 0; i < str.length; i+=2) {
-            var val = (str[i] + str[i+1]).toString(8);
-
-            result.push(parseInt(val, 10));
+            var val = (str[i] + str[i+1]);
+            result.push(parseInt(val, 16));
         }
         return result;
     };

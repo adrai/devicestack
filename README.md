@@ -315,6 +315,10 @@ Converts a byte array to a buffer object.
 Converts a byte array to a readable hex string.
 	[0x01, 0x00].toHexDebug() // returns '01-00'
 
+### array | toHexString
+Converts a byte array to a hex string.
+	[0x01, 0x00].toHexString() // returns '0100'
+
 ### buffer | toArray
 Converts a buffer object to a byte array.
 	(new Buffer([0x01, 0x00])).toArray() // returns [0x01, 0x00]
