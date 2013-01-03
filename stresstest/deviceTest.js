@@ -9,7 +9,6 @@ var counterOpen = 0
 	device.on('close', function() {
 		counterClose++;
 		console.log('closed ' + counterClose + ' times!');
-
 	});
 	device.on('open', function() {
 		counterOpen++;

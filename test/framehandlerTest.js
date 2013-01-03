@@ -1,53 +1,53 @@
-var expect = require('expect.js')
-  , FrameHandler = require('./fixture/framehandler')
-  , Device = require('./fixture/device');
+var expect = require('expect.js'),
+    FrameHandler = require('./fixture/framehandler'),
+    Device = require('./fixture/device');
 
 describe('FrameHandler', function() {
 
-    var device = new Device();
-    var framehandler = new FrameHandler(device);
+  var device = new Device();
+  var framehandler = new FrameHandler(device);
 
-    before(function(done) {
-        device.open(done);
-    });
+  before(function(done) {
+    device.open(done);
+  });
 
-    describe('emitting send', function() {
+  describe('emitting send', function() {
 
-        it('it should emit send on device', function(done) {
+    it('it should emit send on device', function(done) {
 
-            device.once('send', function() {
-                done();
-            });
-            framehandler.emit('send', []);
-
-        });
+      device.once('send', function() {
+        done();
+      });
+      framehandler.emit('send', []);
 
     });
 
-    describe('calling send', function() {
+  });
 
-        it('it should emit send on device', function(done) {
+  describe('calling send', function() {
 
-            device.once('send', function() {
-                done();
-            });
-            framehandler.send([]);
+    it('it should emit send on device', function(done) {
 
-        });
+      device.once('send', function() {
+        done();
+      });
+      framehandler.send([]);
+
+    });
+
+  });
+
+  describe('receiving data from device', function() {
+
+    it('it should emit receive', function(done) {
+
+      framehandler.once('receive', function() {
+        done();
+      });
+      device.send([]);
 
     });
 
-    describe('receiving data from device', function() {
-
-        it('it should emit receive', function(done) {
-
-            framehandler.once('receive', function() {
-                done();
-            });
-            device.send([]);
-
-        });
-
-    });
+  });
 
 });

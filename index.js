@@ -1,9 +1,9 @@
 var index;
 
 if (typeof module.exports !== 'undefined') {
-    index = module.exports;
+  index = module.exports;
 } else {
-    index = root.index = {};
+  index = root.index = {};
 }
 
 index.VERSION = require('./package.json').version;
@@ -17,7 +17,7 @@ index.DeviceLoader = require('./lib/deviceloader');
 index.DeviceGuider = require('./lib/deviceguider');
 
 try {
-	index.SerialDevice = require('./lib/serialdevice');
-	index.SerialDeviceLoader = require('./lib/serialdeviceloader');
-	index.SerialDeviceGuider = require('./lib/serialdeviceguider');
+  index.SerialDevice = require('./lib/serialdevice');
+  index.SerialDeviceLoader = require('./lib/serialdeviceloader');
+  index.SerialDeviceGuider = require('./lib/serialdeviceguider');
 } catch(e) { }

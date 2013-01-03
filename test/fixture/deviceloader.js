@@ -1,34 +1,34 @@
-var DeviceLoader = require('../../index').DeviceLoader
-  , util = require('util')
-  , _ = require('lodash')
-  , Device = require('./device');
+var DeviceLoader = require('../../index').DeviceLoader,
+    util = require('util'),
+    _ = require('lodash'),
+    Device = require('./device');
 
 function MyDeviceLoader() {
-    var self = this;
+  var self = this;
 
-    // call super class
-    DeviceLoader.call(this);
+  // call super class
+  DeviceLoader.call(this);
 
-    this.Device = Device;
+  this.Device = Device;
 
-    this.startDevices = [
-        new Device(),
-        new Device()
-    ];
+  this.startDevices = [
+    new Device(),
+    new Device()
+  ];
 }
 
 util.inherits(MyDeviceLoader, DeviceLoader);
 
 MyDeviceLoader.prototype.lookup = function(callback) {
-    var devices = this.startDevices;
-    try {
-        this.emit('lookup');
-    } catch(e) {
-    }
-    callback(null, devices);
+  var devices = this.startDevices;
+  try {
+    this.emit('lookup');
+  } catch(e) {
+  }
+  callback(null, devices);
 };
 
 module.exports = new MyDeviceLoader();
 module.exports.create = function() {
-    return new MyDeviceLoader();
+  return new MyDeviceLoader();
 };
