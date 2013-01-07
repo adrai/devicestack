@@ -61,7 +61,7 @@ describe('DeviceLoader', function() {
         deviceloader.once('plug', function(device) {
           done();
         });
-        deviceloader.startLookup();
+        deviceloader.startLookup(10);
 
       });
 
@@ -70,7 +70,7 @@ describe('DeviceLoader', function() {
         deviceloader.once('unplug', function(device) {
           done();
         });
-        deviceloader.startLookup();
+        deviceloader.startLookup(10);
         setTimeout(function() {
           deviceloader.startDevices = [deviceloader.startDevices.slice(0, 1)];
         }, 20);
@@ -96,7 +96,7 @@ describe('DeviceLoader', function() {
             done();
           }, 20);
         });
-        deviceloader.startLookup();
+        deviceloader.startLookup(10);
 
       });
 
