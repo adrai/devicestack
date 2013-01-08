@@ -153,15 +153,15 @@ You can have one or multiple framehandlers. A framhandler receives data from the
 
 - reacts on send of upper layer, calls `wrapFrame` function if exists and calls `send` function on lower layer
 - reacts on receive of lower layer, calls `unwrapFrame` function if exists and emits `receive`
-- automatically calls `start` function
+- automatically analyzes incomming data
 
-### start
-Only starts if `analyzeNextFrame` function is defined. Creates an interval that calls `analyzeNextFrame` function.
+### analyze
+Calls `analyzeNextFrame` function in a loop.
 
 - If extending from `require('devicestack').FrameHandler` this mechanism is already defined!
 
-### stop
-Stops the interval that calls `analyzeNextFrame` function.
+### trigger
+Triggers the `analyze` function.
 
 - If extending from `require('devicestack').FrameHandler` this mechanism is already defined!
 
