@@ -16,7 +16,7 @@ if (!Buffer.prototype.toHexDebug) {
       }
       res += str[i] + str[i+ 1];
     }
-    return res;
+    return res.toUpperCase();
   };
 }
 
