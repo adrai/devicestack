@@ -15,6 +15,8 @@ index.Connection = require('./lib/connection');
 index.FrameHandler = require('./lib/framehandler');
 index.DeviceLoader = require('./lib/deviceloader');
 index.DeviceGuider = require('./lib/deviceguider');
+index.Command = require('./lib/command');
+index.Task = require('./lib/task');
 
 try {
   index.SerialDevice = require('./lib/serialdevice');

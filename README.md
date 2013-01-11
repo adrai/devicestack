@@ -114,10 +114,6 @@ Call with optional callback. On closing emit 'disconnecting', call `onDisconnect
 
 - If extending from `require('devicestack').Connection` this mechanism is already defined!
 
-### executeCommand
-Implement the executeCommand mechanism.
-Call with commandData and optional callback.
-
 ### onConnecting
 Define `onConnecting` function if you need to send some commands before definitely connected?
 
@@ -147,6 +143,35 @@ example:
 
 	connection.get('firmwareVersion'); // returns '0.0.1'
 
+### executeCommand
+Executes the passing command.
+Implement the executeCommand mechanism.
+
+### executeTask
+Executes the passing task.
+
+- If extending from `require('devicestack').Connection` this mechanism is already defined!
+
+### runTask
+Runs the passing task.
+
+- If extending from `require('devicestack').Connection` this mechanism is already defined!
+
+### runTask
+Runs the passing task.
+
+- If extending from `require('devicestack').Connection` this mechanism is already defined!
+
+### executeNextTask
+Checks if there is a task in the queue and runs it.
+
+- If extending from `require('devicestack').Connection` this mechanism is already defined!
+
+### checkForNextExecution
+Checks if there is something to execute and executes it.
+IMPORTANT!!! Call this function when a command answer is handled!
+
+- If extending from `require('devicestack').Connection` this mechanism is already defined!
 
 ## framehandler(s)
 You can have one or multiple framehandlers. A framhandler receives data from the upper layer and sends it to the lower layer by wrapping some header or footer information. A framehandler receives data from lower layer and sends it to the upper layer by unwrapping some header or footer information. The lowest layer for a framehandler is the device and the topmost ist the connection.
@@ -268,13 +293,22 @@ Call with the portname and optional callback it will disconnect that device and 
 ## commands
 Build your own commands looking like this:
 
-	function MyCommand(myValue) {
-	    this.cmd = 0x01;
-	    this.data = [myValue ? 0x01 : 0x00];
+	var Command = require('../../index').Command,
+		  util = require('util');
+
+	function MyCommand(firstByte) {
+		// call super class
+	  Command.call(this);
+
+	  firstByte = firstByte || 0x01;
+
+		this.data = [firstByte, 0x02, 0x03];
 	}
 
+	util.inherits(MyCommand, Command);
+
 	MyCommand.prototype.execute = function(connection, callback) {
-		connection.executeCommand(this, callback);
+	  connection.executeCommand(this, callback);
 	};
 
 	module.exports = MyCommand;
@@ -282,20 +316,21 @@ Build your own commands looking like this:
 ## tasks
 Build your own tasks looking like this:
 
-	var MyCommand = require('../commands/myCommand');
+	var Task = require('../../index').Task,
+			util = require('util'),
+	    MyCommand = require('./myCommand');
 
-	function MyTask() {
-		this.myCommand = new MyCommand();
+	function MyTask(identifier) {
+		// call super class
+	  Task.call(this);
+
+		this.command = new MyCommand(identifier);
 	}
 
-	MyTask.prototype.execute = function(connection, callback) {
-		this.myCommand.execute(connection, function(err, data) {
-			if (err) {
-	            return callback(err);
-	        }
-	        
-			callback(err, data);
-		});
+	util.inherits(MyTask, Task);
+
+	MyTask.prototype.perform = function(connection, callback) {
+	  this.command.execute(connection, callback);
 	};
 
 	module.exports = MyTask;

@@ -1,6 +1,8 @@
 var expect = require('expect.js'),
     Connection = require('./fixture/connection'),
-    Device = require('./fixture/device');
+    Device = require('./fixture/device'),
+    Task = require('./fixture/task'),
+    Command = require('./fixture/command');
 
 describe('Connection', function() {
 
@@ -21,6 +23,7 @@ describe('Connection', function() {
       expect(connection.get).to.be.a('function');
       expect(connection.toJSON).to.be.a('function');
       expect(connection.executeCommand).to.be.a('function');
+      expect(connection.executeTask).to.be.a('function');
 
     });
 
@@ -53,7 +56,67 @@ describe('Connection', function() {
         device.once('send', function() {
           done();
         });
-        connection.executeCommand([]);
+        connection.executeCommand(new Command(), function() {});
+
+      });
+
+    });
+
+    describe('calling executeTask', function() {
+
+      it('it should emit send on device', function(done) {
+
+        var send = false;
+
+        device.once('send', function() {
+          send = true;
+        });
+        connection.executeTask(new Task(), function() {
+          expect(send).to.be.ok();
+          done();
+        });
+
+      });
+
+      describe('with ignoreQueue set to true', function() {
+
+        it('it should bypass the queue', function(done) {
+
+          var task1Executed,
+              task2Executed,
+              task3Executed;
+
+          var task1Clb = function(err, res) {
+            task1Executed = true;
+
+            if (task1Executed && task2Executed && task3Executed) {
+              done();
+            }
+          };
+
+          var task2Clb = function(err, res) {
+            task2Executed = true;
+
+            if (task1Executed && task2Executed && task3Executed) {
+              done();
+            }
+          };
+
+          var task3Clb = function(err, res) {
+            task3Executed = true;
+            expect(task2Executed).not.to.be.ok();
+            expect(task3Executed).to.be.ok();
+
+            if (task1Executed && task2Executed && task3Executed) {
+              done();
+            }
+          };
+
+          connection.executeTask(new Task(1), task1Clb);
+          connection.executeTask(new Task(2), task2Clb);
+          connection.executeTask(new Task(3), true, task3Clb);
+
+        });
 
       });
 
