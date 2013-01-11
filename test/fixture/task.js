@@ -12,7 +12,7 @@ function MyTask(identifier) {
 util.inherits(MyTask, Task);
 
 MyTask.prototype.perform = function(connection, callback) {
-  this.command.execute(connection, callback);
+	this.execute(this.command, connection, callback);
 };
 
 module.exports = MyTask;
