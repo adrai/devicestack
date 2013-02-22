@@ -6,7 +6,7 @@ if (!Number.prototype.toArray) {
    * @return {Array}       The result array.
    * 
    * @example:
-   *     64.toArray(); // returns [0x01, 0x00]
+   *     (256).toArray(); // returns [0x01, 0x00]
    */
   Number.prototype.toArray = function(size) {
     if (!size) {
@@ -32,5 +32,17 @@ if (!Number.prototype.toArray) {
     }
 
     return bytes;
+  };
+
+  /**
+   * Converts a number to a buffer object.
+   * @param  {Number} size The size of the array . [optional]
+   * @return {Buffer}       The result array.
+   * 
+   * @example:
+   *     (256).toBuffer(); // returns [0x01, 0x00]
+   */
+  Number.prototype.toBuffer = function(size) {
+    return new Buffer(this.toArray(size));
   };
 }

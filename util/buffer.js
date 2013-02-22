@@ -33,3 +33,22 @@ if (!Buffer.prototype.toArray) {
     return Array.prototype.slice.call(this, 0);
   };
 }
+
+if (!Buffer.prototype.toNumber) {
+
+  /**
+   * Converts a buffer object to a number.
+   * @return {Number}       The result number.
+   * 
+   * @example:
+   *     new Buffer([0x01, 0x00]).toNumber(); // returns 256
+   */
+  Buffer.prototype.toNumber = function() {
+    var value = 0;
+    for ( var i = 0; i < this.length; i++) {
+      value = (value * 256) + this[i];
+    }
+
+    return value;
+  };
+}

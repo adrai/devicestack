@@ -62,7 +62,7 @@ if (!Array.prototype.toNumber) {
    * @return {Number}       The result number.
    * 
    * @example:
-   *     [0x01, 0x00].toNumber(); // returns 64
+   *     [0x01, 0x00].toNumber(); // returns 256
    */
   Array.prototype.toNumber = function() {
     var value = 0;
