@@ -20,7 +20,7 @@
     "enum": ">=0.2.3"
   },
   "optionalDependencies": {
-    "serialport": "https://github.com/git@github.com:KABA-CCEAC/node-serialport.git/node-serialport/tarball/master"
+    "serialport": "https://github.com/KABA-CCEAC/node-serialport.git/node-serialport/tarball/master"
   },
   "devDependencies": {
     "mocha": ">=1.0.1",
