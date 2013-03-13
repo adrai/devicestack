@@ -714,10 +714,16 @@ For documentation look at [enum](https://github.com/adrai/enum).
 	myDeviceguider.connect(port[, function(err, device, connection) {}]);
 
 
+# Release Notes
+
+## v1.4.0
+
+- default serial device loaders uses the global serial device loader under the hood
+
 
 # License
 
-Copyright (c) 2012 Adriano Raiano
+Copyright (c) 2013 Adriano Raiano
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
