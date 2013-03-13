@@ -5,7 +5,7 @@
   "private": false,
   "main": "index.js",
   "engines": {
-    "node": ">=0.8.0",
+    "node": ">=0.6.0",
     "npm": ">=1.1.x"
   },
   "directories": {
@@ -20,7 +20,7 @@
     "enum": ">=0.2.3"
   },
   "optionalDependencies": {
-    "serialport": "https://github.com/KABA-CCEAC/node-serialport.git/node-serialport/tarball/master"
+    "serialport": "https://github.com/KABA-CCEAC/node-serialport/tarball/master"
   },
   "devDependencies": {
     "mocha": ">=1.0.1",
