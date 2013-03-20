@@ -19,7 +19,16 @@ index.Command = require('./lib/command');
 index.Task = require('./lib/task');
 
 try {
-  index.SerialDevice = require('./lib/serialdevice');
-  index.SerialDeviceLoader = require('./lib/serialdeviceloader');
-  index.SerialDeviceGuider = require('./lib/serialdeviceguider');
+  index.SerialDevice = require('./lib/serial/device');
+  index.SerialDeviceLoader = require('./lib/serial/deviceloader');
+  index.SerialDeviceGuider = require('./lib/serial/deviceguider');
+} catch(e) { }
+
+try {
+  index.FtdiDevice = require('./lib/ftdi/device');
+  index.FtdiDeviceLoader = require('./lib/ftdi/deviceloader');
+} catch(e) { }
+
+try {
+  index.FtdiSerialDevice = require('./lib/ftdiserial/device');
 } catch(e) { }

@@ -43,25 +43,30 @@ Implement the open mechanism to your device.
 Call with optional callback. On opened emit 'open' and call the callback.
 
 - If extending from `require('devicestack').SerialDevice` this mechanism is already defined!
+- If extending from `require('devicestack').FtdiDevice` this mechanism is already defined!
+- If extending from `require('devicestack').FtdiSerialDevice` this mechanism is already defined!
 
 ### close
 Implement the close mechanism to your device.
 Call with optional callback. On closed emit 'close' and call the callback.
 
 - If extending from `require('devicestack').SerialDevice` this mechanism is already defined!
+- If extending from `require('devicestack').FtdiDevice` this mechanism is already defined!
+- If extending from `require('devicestack').FtdiSerialDevice` this mechanism is already defined!
 
 ### send
 Implement the send mechanism to your device by subscribing the 'send' event.
 Call send or emit 'send' on the device with a byte array.
 
 - If extending from `require('devicestack').Device` the send function is already defined!
-- If extending from `require('devicestack').SerialDevice` this mechanism is already defined!
 
 ### receive
 Implement the receive mechanism from your device by emitting the 'receive' event.
 When you receive data from your device emit 'receive' with a byte array.
 
 - If extending from `require('devicestack').SerialDevice` this mechanism is already defined!
+- If extending from `require('devicestack').FtdiDevice` this mechanism is already defined!
+- If extending from `require('devicestack').FtdiSerialDevice` this mechanism is already defined!
 
 ### connect
 Implement the connect mechanism to your device.
@@ -229,6 +234,7 @@ Calls `lookup` function with optional callback and emits 'plug' for new attached
 Call with optional callback and call callback with an array of devices.
 
 - If extending from `require('devicestack').SerialDeviceLoader` this mechanism is already defined!
+- If extending from `require('devicestack').FtdiDeviceLoader` this mechanism is already defined!
 
 
 ## deviceguider
@@ -715,6 +721,13 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 
 # Release Notes
+
+## v1.5.0
+
+- ftdi integration
+- FtdiDevice
+- FtdiDeviceLoader
+- FtdiSerialDevice
 
 ## v1.4.0
 

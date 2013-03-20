@@ -1,6 +1,6 @@
 {
   "name": "devicestack",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "This module helps you to represent a device and its protocol.",
   "private": false,
   "main": "index.js",
@@ -20,7 +20,8 @@
     "enum": ">=0.2.3"
   },
   "optionalDependencies": {
-    "serialport": "https://github.com/KABA-CCEAC/node-serialport/tarball/master"
+    "serialport": "https://github.com/KABA-CCEAC/node-serialport/tarball/master",
+    "ftdi": ">=0.1.0"
   },
   "devDependencies": {
     "mocha": ">=1.0.1",
