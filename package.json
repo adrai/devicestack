@@ -20,7 +20,7 @@
     "enum": ">=0.2.3"
   },
   "optionalDependencies": {
-    "serialport": "https://github.com/KABA-CCEAC/node-serialport/tarball/master",
+    "serialport": ">=1.1.0",
     "ftdi": ">=0.1.0"
   },
   "devDependencies": {
