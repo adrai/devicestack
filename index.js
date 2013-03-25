@@ -32,3 +32,7 @@ try {
 try {
   index.FtdiSerialDevice = require('./lib/ftdiserial/device');
 } catch(e) { }
+
+// try {
+  index.UsbDeviceLoader = require('./lib/usb/deviceloader');
+// } catch(e) { }
