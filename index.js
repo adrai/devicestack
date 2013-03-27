@@ -27,12 +27,13 @@ try {
 try {
   index.FtdiDevice = require('./lib/ftdi/device');
   index.FtdiDeviceLoader = require('./lib/ftdi/deviceloader');
+  index.EventedFtdiDeviceLoader = require('./lib/ftdi/eventeddeviceloader');
 } catch(e) { }
 
 try {
   index.FtdiSerialDevice = require('./lib/ftdiserial/device');
 } catch(e) { }
 
-// try {
+try {
   index.UsbDeviceLoader = require('./lib/usb/deviceloader');
-// } catch(e) { }
+} catch(e) { }
