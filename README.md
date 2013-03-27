@@ -726,9 +726,9 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 - ftdi integration
 - 	FtdiDevice
-- 	FtdiDeviceLoader
 - 	FtdiSerialDevice
-- 	EventedFtdiSerialDevice
+- 	FtdiDeviceLoader
+- 	EventedFtdiDeviceLoader
 
 ## v1.4.0
 
