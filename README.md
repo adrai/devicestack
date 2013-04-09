@@ -35,6 +35,22 @@ This module helps you to represent a device and its protocol.
 
 </pre>
 
+Each of the following software components can be used separately if you want...
+- require('devicestack').Device
+- require('devicestack').SerialDevice
+- require('devicestack').FtdiDevice
+- require('devicestack').FtdiSerialDevice
+- require('devicestack').Connection
+- require('devicestack').FrameHandler
+- require('devicestack').DeviceLoader
+- require('devicestack').SerialDeviceLoader
+- require('devicestack').FtdiDeviceLoader
+- require('devicestack').EventedFtdiDeviceLoader
+- require('devicestack').DeviceGuider
+- require('devicestack').SerialDeviceGuider
+- require('devicestack').Command
+- require('devicestack').Task
+
 ## device
 Device represents your physical device.
 
@@ -583,6 +599,48 @@ For documentation look at [enum](https://github.com/adrai/enum).
 	util.inherits(MyDevice, SerialDevice);
 
 	module.exports = MyDevice;
+
+### If it's a ftdi device...
+
+	var FtdiDevice = require('devicestack').FtdiDevice
+	  , util = require('util')
+	  , Connection = require('./connection'); // this line...;
+
+	function MyDevice(ftdiSettings) {
+	    // call super class
+	    FtdiDevice.call(this,
+	        ftdiSettings,
+	        {
+		        baudrate: 115200,
+		        databits: 8,
+		        stopbits: 1,
+		        parity: 'none'
+		      },
+	        Connection // ...and this line
+	    );
+	}
+
+	util.inherits(MyDevice, SerialDevice);
+
+	module.exports = MyDevice;
+
+### ...and use it this way...
+	var MyDevice = require('./myDevice');
+
+	var myDevice = new MyDevice({
+		locationId: 0x1234,
+  	serialNumber: 's2345'
+	});
+
+	myDevice.open(function(err) {
+
+		myDevice.on('receive', function(data) {
+			console.log(data);
+		});
+
+		myDevice.send([0x01, 0x02, 0x03]);
+
+	});
 
 
 ## Let's lookup
