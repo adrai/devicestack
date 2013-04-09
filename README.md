@@ -103,12 +103,12 @@ Sets attributes for the device.
 
 example:
 
-	device.set('firmwareVersion', '0.0.1');
-	// or
-	device.set({
-		firmwareVersion: '0.0.1',
-		bootloaderVersion: '0.0.1'
-	});
+  device.set('firmwareVersion', '0.0.1');
+  // or
+  device.set({
+    firmwareVersion: '0.0.1',
+    bootloaderVersion: '0.0.1'
+  });
 
 ### get
 Gets an attribute of the device.
@@ -117,7 +117,7 @@ Gets an attribute of the device.
 
 example:
 
-	device.get('firmwareVersion'); // returns '0.0.1'
+  device.get('firmwareVersion'); // returns '0.0.1'
 
 
 ## connection
@@ -148,12 +148,12 @@ Sets attributes for the connection.
 
 example:
 
-	connection.set('firmwareVersion', '0.0.1');
-	// or
-	connection.set({
-		firmwareVersion: '0.0.1',
-		bootloaderVersion: '0.0.1'
-	});
+  connection.set('firmwareVersion', '0.0.1');
+  // or
+  connection.set({
+    firmwareVersion: '0.0.1',
+    bootloaderVersion: '0.0.1'
+  });
 
 ### get
 Gets an attribute of the connection.
@@ -162,7 +162,7 @@ Gets an attribute of the connection.
 
 example:
 
-	connection.get('firmwareVersion'); // returns '0.0.1'
+  connection.get('firmwareVersion'); // returns '0.0.1'
 
 ### executeCommand
 Executes the passing command.
@@ -315,90 +315,90 @@ Call with the portname and optional callback it will disconnect that device and 
 ## commands
 Build your own commands looking like this:
 
-	var Command = require('../../index').Command,
-		  util = require('util');
+  var Command = require('../../index').Command,
+      util = require('util');
 
-	function MyCommand(firstByte) {
-		// call super class
-	  Command.call(this);
+  function MyCommand(firstByte) {
+    // call super class
+    Command.call(this);
 
-	  firstByte = firstByte || 0x01;
+    firstByte = firstByte || 0x01;
 
-		this.data = [firstByte, 0x02, 0x03];
-	}
+    this.data = [firstByte, 0x02, 0x03];
+  }
 
-	util.inherits(MyCommand, Command);
+  util.inherits(MyCommand, Command);
 
-	MyCommand.prototype.execute = function(connection, callback) {
-	  connection.executeCommand(this, callback);
-	};
+  MyCommand.prototype.execute = function(connection, callback) {
+    connection.executeCommand(this, callback);
+  };
 
-	module.exports = MyCommand;
+  module.exports = MyCommand;
 
 ## tasks
 Build your own tasks looking like this:
 
-	var Task = require('../../index').Task,
-			util = require('util'),
-	    MyCommand = require('./myCommand');
+  var Task = require('../../index').Task,
+      util = require('util'),
+      MyCommand = require('./myCommand');
 
-	function MyTask(identifier) {
-		// call super class
-	  Task.call(this);
+  function MyTask(identifier) {
+    // call super class
+    Task.call(this);
 
-		this.command = new MyCommand(identifier);
-	}
+    this.command = new MyCommand(identifier);
+  }
 
-	util.inherits(MyTask, Task);
+  util.inherits(MyTask, Task);
 
-	MyTask.prototype.perform = function(connection, callback) {
-		this.execute(this.command, connection, callback);
-	};
+  MyTask.prototype.perform = function(connection, callback) {
+    this.execute(this.command, connection, callback);
+  };
 
-	module.exports = MyTask;
+  module.exports = MyTask;
 
 ## utils
 Some utility functions are shipped with this module.
 
 ### array | toNumber
 Converts a byte array to a number.
-	[0x01, 0x00].toNumber() // returns 256
+  [0x01, 0x00].toNumber() // returns 256
 
 ### array | toBuffer
 Converts a byte array to a buffer object.
-	[0x01, 0x00].toBuffer()
+  [0x01, 0x00].toBuffer()
 
 ### array | toHexDebug
 Converts a byte array to a readable hex string.
-	[0x01, 0x00].toHexDebug() // returns '01-00'
+  [0x01, 0x00].toHexDebug() // returns '01-00'
 
 ### array | toHexString
 Converts a byte array to a hex string.
-	[0x01, 0x00].toHexString() // returns '0100'
+  [0x01, 0x00].toHexString() // returns '0100'
 
 ### buffer | toArray
 Converts a buffer object to a byte array.
-	(new Buffer([0x01, 0x00])).toArray() // returns [0x01, 0x00]
+  (new Buffer([0x01, 0x00])).toArray() // returns [0x01, 0x00]
 
 ### buffer | toHexDebug
 Converts a buffer object to a readable hex string.
-	(new Buffer([0x01, 0x00])).toHexDebug() // returns '01-00'
+  (new Buffer([0x01, 0x00])).toHexDebug() // returns '01-00'
 
 ### buffer | toNumber
 Converts a buffer object to a number.
-	(new Buffer([0x01, 0x00])).toNumber() // returns 256
+  (new Buffer([0x01, 0x00])).toNumber() // returns 256
 
 ### number | toArray
 Converts a number to a byte array.
-	(256).toArray() // returns [0x01, 0x00]
+  (256).toArray() // returns [0x01, 0x00]
 
 ### number | toBuffer
 Converts a number to a buffer object.
-	(256).toArray() // returns [0x01, 0x00]
+  (256).toArray() // returns [0x01, 0x00]
 
 ### string | toArray
 Converts a hex string to a byte array.
-	'0100'.toArray() // returns [0x01, 0x00]
+  '0100'.toArray() // returns [0x01, 0x00]
 
 ### enum
 The Enum type is automatically registered in node.js.
@@ -413,369 +413,369 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 ## Start from the device
 
-	var Device = require('devicestack').Device
-	  , util = require('util');
+  var Device = require('devicestack').Device
+    , util = require('util');
 
-	function MyDevice() {
-	    // call super class
-	    Device.call(this);
-	}
+  function MyDevice() {
+      // call super class
+      Device.call(this);
+  }
 
-	util.inherits(MyDevice, Device);
+  util.inherits(MyDevice, Device);
 
-	MyDevice.prototype.open = function(callback) {
-	    var self = this;
+  MyDevice.prototype.open = function(callback) {
+      var self = this;
 
-	    setTimeout(function() {
-	        self.emit('open', callback);
-	        if (!self.connection && callback) callback();
-	    }, 10);
+      setTimeout(function() {
+          self.emit('open', callback);
+          if (!self.connection && callback) callback();
+      }, 10);
 
-	    this.on('send', function(data) {
-	        setTimeout(function() {
-	            self.emit('receive', data);
-	        }, 5);
-	    });
-	};
+      this.on('send', function(data) {
+          setTimeout(function() {
+              self.emit('receive', data);
+          }, 5);
+      });
+  };
 
-	MyDevice.prototype.close = function(callback, fire) {
-	    var self = this;
+  MyDevice.prototype.close = function(callback, fire) {
+      var self = this;
 
-	    setTimeout(function() {
-	        self.emit('close', callback);
-	        self.removeAllListeners();
-	        if (callback && (!self.connection || fire)) callback(null);
-	    }, 10);
-	};
+      setTimeout(function() {
+          self.emit('close', callback);
+          self.removeAllListeners();
+          if (callback && (!self.connection || fire)) callback(null);
+      }, 10);
+  };
 
-	module.exports = MyDevice;
+  module.exports = MyDevice;
 
 ### If it's a serial device extend from SerialDevice
 
-	var SerialDevice = require('devicestack').SerialDevice
-	  , util = require('util');
+  var SerialDevice = require('devicestack').SerialDevice
+    , util = require('util');
 
-	function MyDevice(port) {
-	    // call super class
-	    SerialDevice.call(this,
-	        port, 
-	        {
-	            baudrate: 38400,
-	            databits: 8,
-	            stopbits: 1,
-	            parity: 'none'
-	        }
-	    );
-	}
+  function MyDevice(port) {
+      // call super class
+      SerialDevice.call(this,
+          port, 
+          {
+              baudrate: 38400,
+              databits: 8,
+              stopbits: 1,
+              parity: 'none'
+          }
+      );
+  }
 
-	util.inherits(MyDevice, SerialDevice);
+  util.inherits(MyDevice, SerialDevice);
 
-	module.exports = MyDevice;
+  module.exports = MyDevice;
 
 
 ## Continue with the framehandler(s)
 
-	var FrameHandler = require('devicestack').FrameHandler
-	  , util = require('util');
+  var FrameHandler = require('devicestack').FrameHandler
+    , util = require('util');
 
-	function MyFrameHandler(device) {
-	    // call super class
-	    FrameHandler.call(this, device);
-	}
+  function MyFrameHandler(device) {
+      // call super class
+      FrameHandler.call(this, device);
+  }
 
-	util.inherits(MyFrameHandler, FrameHandler);
+  util.inherits(MyFrameHandler, FrameHandler);
 
-	MyFrameHandler.prototype.analyzeNextFrame = function(incomming) {
-	    return incomming.splice(0);
-	};
+  MyFrameHandler.prototype.analyzeNextFrame = function(incomming) {
+      return incomming.splice(0);
+  };
 
-	MyFrameHandler.prototype.unwrapFrame = function(frame) {
-	    return frame;
-	};
+  MyFrameHandler.prototype.unwrapFrame = function(frame) {
+      return frame;
+  };
 
-	MyFrameHandler.prototype.wrapFrame = function(frame) {
-	    return frame;
-	};
+  MyFrameHandler.prototype.wrapFrame = function(frame) {
+      return frame;
+  };
 
-	module.exports = MyFrameHandler;
+  module.exports = MyFrameHandler;
 
 
 ## Now build your stack with the device and the framehandler(s) defining a connection
 
-	var Connection = require('devicestack').Connection
-	  , util = require('util')
-	  , FrameHandler = require('./framehandler');
+  var Connection = require('devicestack').Connection
+    , util = require('util')
+    , FrameHandler = require('./framehandler');
 
-	function MyConnection(device) {
-	    // call super class
-	    Connection.call(this, device);
+  function MyConnection(device) {
+      // call super class
+      Connection.call(this, device);
 
-	    this.frameHandler = new FrameHandler(this.device);
-	    this.frameHandler.on('receive', function (frame) {
-	        // forward to appropriate command...
-	    });
-	}
+      this.frameHandler = new FrameHandler(this.device);
+      this.frameHandler.on('receive', function (frame) {
+          // forward to appropriate command...
+      });
+  }
 
-	util.inherits(MyConnection, Connection);
+  util.inherits(MyConnection, Connection);
 
-	// define if needed
-	MyConnection.prototype.onConnecting = function(callback) {
-	    // Need to send some commands before definitely connected?
-	    if (callback) callback();
-	};
+  // define if needed
+  MyConnection.prototype.onConnecting = function(callback) {
+      // Need to send some commands before definitely connected?
+      if (callback) callback();
+  };
 
-	// define if needed
-	MyConnection.prototype.onDisconnecting = function(callback) {
-	    // Need to send some commands before definitely closed?
-	    if (callback) callback();
-	};
+  // define if needed
+  MyConnection.prototype.onDisconnecting = function(callback) {
+      // Need to send some commands before definitely closed?
+      if (callback) callback();
+  };
 
-	MyConnection.prototype.executeCommand = function(commandData, callback) {
-	    this.frameHandler.send('send', commandData);
-	};
+  MyConnection.prototype.executeCommand = function(commandData, callback) {
+      this.frameHandler.send('send', commandData);
+  };
 
-	module.exports = MyConnection;
+  module.exports = MyConnection;
 
 ### Don't forget to extend the device with the connection
 
-	var Device = require('devicestack').Device
-	  , util = require('util')
-	  , Connection = require('./connection'); // this line...
+  var Device = require('devicestack').Device
+    , util = require('util')
+    , Connection = require('./connection'); // this line...
 
-	function MyDevice() {
-	    // call super class
-	    Device.call(this, Connection);  // ...and this line
-	}
+  function MyDevice() {
+      // call super class
+      Device.call(this, Connection);  // ...and this line
+  }
 
-	util.inherits(MyDevice, Device);
+  util.inherits(MyDevice, Device);
 
-	MyDevice.prototype.open = function(callback) {
-	    var self = this;
+  MyDevice.prototype.open = function(callback) {
+      var self = this;
 
-	    setTimeout(function() {
-	        self.emit('open', callback);
-	        if (!self.connection && callback) callback();
-	    }, 10);
+      setTimeout(function() {
+          self.emit('open', callback);
+          if (!self.connection && callback) callback();
+      }, 10);
 
-	    this.on('send', function(data) {
-	        setTimeout(function() {
-	            self.emit('receive', data);
-	        }, 5);
-	    });
-	};
+      this.on('send', function(data) {
+          setTimeout(function() {
+              self.emit('receive', data);
+          }, 5);
+      });
+  };
 
-	MyDevice.prototype.close = function(callback, fire) {
-	    var self = this;
+  MyDevice.prototype.close = function(callback, fire) {
+      var self = this;
 
-	    setTimeout(function() {
-	        self.emit('close', callback);
-	        self.removeAllListeners();
-	        if (callback && (!self.connection || fire)) callback(null);
-	    }, 10);
-	};
+      setTimeout(function() {
+          self.emit('close', callback);
+          self.removeAllListeners();
+          if (callback && (!self.connection || fire)) callback(null);
+      }, 10);
+  };
 
-	module.exports = MyDevice;
+  module.exports = MyDevice;
 
 ### If it's a serial device...
 
-	var SerialDevice = require('devicestack').SerialDevice
-	  , util = require('util')
-	  , Connection = require('./connection'); // this line...;
+  var SerialDevice = require('devicestack').SerialDevice
+    , util = require('util')
+    , Connection = require('./connection'); // this line...;
 
-	function MyDevice(port) {
-	    // call super class
-	    SerialDevice.call(this,
-	        port, 
-	        {
-	            baudrate: 38400,
-	            databits: 8,
-	            stopbits: 1,
-	            parity: 'none'
-	        },
-	        Connection // ...and this line
-	    );
-	}
+  function MyDevice(port) {
+      // call super class
+      SerialDevice.call(this,
+          port, 
+          {
+              baudrate: 38400,
+              databits: 8,
+              stopbits: 1,
+              parity: 'none'
+          },
+          Connection // ...and this line
+      );
+  }
 
-	util.inherits(MyDevice, SerialDevice);
+  util.inherits(MyDevice, SerialDevice);
 
-	module.exports = MyDevice;
+  module.exports = MyDevice;
 
 ### If it's a ftdi device...
 
-	var FtdiDevice = require('devicestack').FtdiDevice
-	  , util = require('util')
-	  , Connection = require('./connection'); // this line...;
+  var FtdiDevice = require('devicestack').FtdiDevice
+    , util = require('util')
+    , Connection = require('./connection'); // this line...;
 
-	function MyDevice(ftdiSettings) {
-	    // call super class
-	    FtdiDevice.call(this,
-	        ftdiSettings,
-	        {
-		        baudrate: 115200,
-		        databits: 8,
-		        stopbits: 1,
-		        parity: 'none'
-		      },
-	        Connection // ...and this line
-	    );
-	}
+  function MyDevice(ftdiSettings) {
+      // call super class
+      FtdiDevice.call(this,
+          ftdiSettings,
+          {
+              baudrate: 38400,
+              databits: 8,
+              stopbits: 1,
+              parity: 'none'
+          },
+          Connection // ...and this line
+      );
+  }
 
-	util.inherits(MyDevice, SerialDevice);
+  util.inherits(MyDevice, SerialDevice);
 
-	module.exports = MyDevice;
+  module.exports = MyDevice;
 
 ### ...and use it this way...
-	var MyDevice = require('./myDevice');
+  var MyDevice = require('./myDevice');
 
-	var myDevice = new MyDevice({
-		locationId: 0x1234,
-  	serialNumber: 's2345'
-	});
+  var myDevice = new MyDevice({
+    locationId: 0x1234,
+    serialNumber: 's2345'
+  });
 
-	myDevice.open(function(err) {
+  myDevice.open(function(err) {
 
-		myDevice.on('receive', function(data) {
-			console.log(data);
-		});
+    myDevice.on('receive', function(data) {
+      console.log(data);
+    });
 
-		myDevice.send([0x01, 0x02, 0x03]);
+    myDevice.send([0x01, 0x02, 0x03]);
 
-	});
+  });
 
 
 ## Let's lookup
 
-	var DeviceLoader = require('devicestack').DeviceLoader
-	  , util = require('util')
-	  , Device = require('./device');
+  var DeviceLoader = require('devicestack').DeviceLoader
+    , util = require('util')
+    , Device = require('./device');
 
-	function MyDeviceLoader() {
-	    // call super class
-	    DeviceLoader.call(this);
-	}
+  function MyDeviceLoader() {
+      // call super class
+      DeviceLoader.call(this);
+  }
 
-	util.inherits(MyDeviceLoader, DeviceLoader);
+  util.inherits(MyDeviceLoader, DeviceLoader);
 
-	MyDeviceLoader.prototype.lookup = function(callback) {
-	    var devices =  = [
-	        new Device(),
-	        new Device()
-	    ];
-	    try {
-	        this.emit('lookup');
-	    } catch(e) {
-	    }
-	    callback(null, devices);
-	};
+  MyDeviceLoader.prototype.lookup = function(callback) {
+      var devices =  = [
+          new Device(),
+          new Device()
+      ];
+      try {
+          this.emit('lookup');
+      } catch(e) {
+      }
+      callback(null, devices);
+  };
 
-	module.exports = new MyDeviceLoader();
+  module.exports = new MyDeviceLoader();
 
 ### If it's a serial device extend from serialdeviceloader...
 
-	var SerialDeviceLoader = require('devicestack').SerialDeviceLoader
-	  , _ = require('lodash')
-	  , util = require('util')
-	  , Device = require('./device');
+  var SerialDeviceLoader = require('devicestack').SerialDeviceLoader
+    , _ = require('lodash')
+    , util = require('util')
+    , Device = require('./device');
 
-	function MyDeviceLoader() {
-	    // call super class
-	    MyDeviceLoader.call(this, Device);
-	}
+  function MyDeviceLoader() {
+      // call super class
+      MyDeviceLoader.call(this, Device);
+  }
 
-	util.inherits(MyDeviceLoader, SerialDeviceLoader);
+  util.inherits(MyDeviceLoader, SerialDeviceLoader);
 
-	MyDeviceLoader.prototype.filter = function(ports) {
-	    var resPorts = _.filter(ports, function(item) {
-	        if (process.platform == 'win32') {
-	            return item.pnpId.indexOf('VID_1234+PID_5678') >= 0;
-	        } else if (process.platform == 'darwin') {
-	            return item.productId === '0x5678' && item.vendorId === '0x1234';
-	        } else {
-	            return item.pnpId.indexOf('MyDeviceIdentification') >= 0;
-	        }
-	    });
-	    return resPorts;
-	};
+  MyDeviceLoader.prototype.filter = function(ports) {
+      var resPorts = _.filter(ports, function(item) {
+          if (process.platform == 'win32') {
+              return item.pnpId.indexOf('VID_1234+PID_5678') >= 0;
+          } else if (process.platform == 'darwin') {
+              return item.productId === '0x5678' && item.vendorId === '0x1234';
+          } else {
+              return item.pnpId.indexOf('MyDeviceIdentification') >= 0;
+          }
+      });
+      return resPorts;
+  };
 
-	module.exports = new MyDeviceLoader();
+  module.exports = new MyDeviceLoader();
 
 
 ## And finally help with a guider
 
-	var DeviceGuider = require('devicestack').DeviceGuider
-	  , util = require('util')
-	  , deviceLoader = require('./deviceloader');
+  var DeviceGuider = require('devicestack').DeviceGuider
+    , util = require('util')
+    , deviceLoader = require('./deviceloader');
 
-	function MyDeviceGuider() {
+  function MyDeviceGuider() {
 
-	    // call super class
-	    DeviceGuider.call(this, deviceLoader);
-	}
+      // call super class
+      DeviceGuider.call(this, deviceLoader);
+  }
 
-	util.inherits(MyDeviceGuider, DeviceGuider);
+  util.inherits(MyDeviceGuider, DeviceGuider);
 
-	module.exports = new MyDeviceGuider();
+  module.exports = new MyDeviceGuider();
 
 
 ## And now?
 
-	var myDeviceguider = require('./deviceguider');
+  var myDeviceguider = require('./deviceguider');
 
-	myDeviceguider.on('err', function(err) {
-	    if (err) { console.log(err); return process.exit(); }
-	});
+  myDeviceguider.on('err', function(err) {
+      if (err) { console.log(err); return process.exit(); }
+  });
 
-	myDeviceguider.on('plug', function(device) {
-	    console.log('\n--->>> plugged a device\n');
-	});
+  myDeviceguider.on('plug', function(device) {
+      console.log('\n--->>> plugged a device\n');
+  });
 
-	myDeviceguider.on('unplug', function(device) {
-	    console.log('\n--->>> unplugged a device\n');
-	});
+  myDeviceguider.on('unplug', function(device) {
+      console.log('\n--->>> unplugged a device\n');
+  });
 
-	myDeviceguider.on('connect', function(connection) {
-	    console.log('\n--->>> connected a device\n');
+  myDeviceguider.on('connect', function(connection) {
+      console.log('\n--->>> connected a device\n');
 
-	    connection.executeCommand(/* your stuff */, callback);
-	});
-	
-	myDeviceguider.on('disconnect', function(connection) {
-	    console.log('\n--->>> disconnected a device\n');
-	});
+      connection.executeCommand(/* your stuff */, callback);
+  });
+  
+  myDeviceguider.on('disconnect', function(connection) {
+      console.log('\n--->>> disconnected a device\n');
+  });
 
-	myDeviceguider.getCurrentState(function(err, currentState) {
-	    if (currentState.plugged.length === 0) { console.log('No devices found!'); /*return process.exit();*/ }
-	});
+  myDeviceguider.getCurrentState(function(err, currentState) {
+      if (currentState.plugged.length === 0) { console.log('No devices found!'); /*return process.exit();*/ }
+  });
 
 
 
-	// V1: autoconnect first device...
-	myDeviceguider.on('connect', function(device, connection) {
-	    // when first device connected...
-	});
-	myDeviceguider.autoconnectOne([function(err, device, connection) {}]);
-	myDeviceguider.stopautoconnecting(); // will stop autoconnecting and will disconnect connected device
+  // V1: autoconnect first device...
+  myDeviceguider.on('connect', function(device, connection) {
+      // when first device connected...
+  });
+  myDeviceguider.autoconnectOne([function(err, device, connection) {}]);
+  myDeviceguider.stopautoconnecting(); // will stop autoconnecting and will disconnect connected device
 
-	// V2: autoconnect all devices...
-	myDeviceguider.on('connect', function(device, connection) {
-	    // when a device connected...
-	});
-	myDeviceguider.autoconnect();
-	myDeviceguider.stopautoconnecting(); // will stop autoconnecting and will disconnect all connected devices
+  // V2: autoconnect all devices...
+  myDeviceguider.on('connect', function(device, connection) {
+      // when a device connected...
+  });
+  myDeviceguider.autoconnect();
+  myDeviceguider.stopautoconnecting(); // will stop autoconnecting and will disconnect all connected devices
 
-	// V3: manualconnect devices...
-	myDeviceguider.on('plug', function(device) {
-	    // when a device ready to be connected...
-	    device.connect(function(err, connection) {
-	        // device connected...
-	    });
-	});
+  // V3: manualconnect devices...
+  myDeviceguider.on('plug', function(device) {
+      // when a device ready to be connected...
+      device.connect(function(err, connection) {
+          // device connected...
+      });
+  });
 
-	// V4: manualconnect a device with port...
-	myDeviceguider.on('connect', function(device, connection) {
-	    // when first device connected...
-	});
-	myDeviceguider.connect(port[, function(err, device, connection) {}]);
+  // V4: manualconnect a device with port...
+  myDeviceguider.on('connect', function(device, connection) {
+      // when first device connected...
+  });
+  myDeviceguider.connect(port[, function(err, device, connection) {}]);
 
 
 # Release Notes
@@ -783,10 +783,10 @@ For documentation look at [enum](https://github.com/adrai/enum).
 ## v1.5.0
 
 - ftdi integration
-- 	FtdiDevice
-- 	FtdiSerialDevice
-- 	FtdiDeviceLoader
-- 	EventedFtdiDeviceLoader
+-   FtdiDevice
+-   FtdiSerialDevice
+-   FtdiDeviceLoader
+-   EventedFtdiDeviceLoader
 
 ## v1.4.0
 
