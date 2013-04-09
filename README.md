@@ -472,45 +472,46 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 	module.exports = MyDevice;
 
+
 ### If it's a ftdi device...
 
-  var FtdiDevice = require('devicestack').FtdiDevice
-    , util = require('util');
+    var FtdiDevice = require('devicestack').FtdiDevice
+      , util = require('util');
 
-  function MyDevice(ftdiSettings) {
-      // call super class
-      FtdiDevice.call(this,
-          ftdiSettings,
-          {
-              baudrate: 38400,
-              databits: 8,
-              stopbits: 1,
-              parity: 'none'
-          }
-      );
-  }
+    function MyDevice(ftdiSettings) {
+        // call super class
+        FtdiDevice.call(this,
+            ftdiSettings,
+            {
+                baudrate: 38400,
+                databits: 8,
+                stopbits: 1,
+                parity: 'none'
+            }
+        );
+    }
 
-  util.inherits(MyDevice, SerialDevice);
+    util.inherits(MyDevice, SerialDevice);
 
-  module.exports = MyDevice;
+    module.exports = MyDevice;
 
 ### ...and use it this way...
-  var MyDevice = require('./myDevice');
+    var MyDevice = require('./myDevice');
 
-  var myDevice = new MyDevice({
-    locationId: 0x1234,
-    serialNumber: 's2345'
-  });
-
-  myDevice.open(function(err) {
-
-    myDevice.on('receive', function(data) {
-      console.log(data);
+    var myDevice = new MyDevice({
+      locationId: 0x1234,
+      serialNumber: 's2345'
     });
 
-    myDevice.send([0x01, 0x02, 0x03]);
+    myDevice.open(function(err) {
 
-  });
+      myDevice.on('receive', function(data) {
+        console.log(data);
+      });
+
+      myDevice.send([0x01, 0x02, 0x03]);
+
+    });
 
 
 ## Continue with the framehandler(s)
