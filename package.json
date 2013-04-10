@@ -22,7 +22,7 @@
   "optionalDependencies": {
     "serialport": ">=1.1.0",
     "ftdi": ">=1.0.0",
-    "usb-detection": ">=0.1.0"
+    "usb-detection": ">=1.0.0"
   },
   "devDependencies": {
     "mocha": ">=1.0.1",
