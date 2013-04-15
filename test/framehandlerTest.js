@@ -4,6 +4,18 @@ var expect = require('expect.js'),
 
 describe('FrameHandler', function() {
 
+  after(function() {
+    var pm;
+
+    try {
+      pm = require('pm-notify');
+    } catch(e) {}
+
+    if (pm) {
+      pm.stopMonitoring();
+    }
+  });
+
   var device = new Device();
   var framehandler = new FrameHandler(device);
 

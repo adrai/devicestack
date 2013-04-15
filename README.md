@@ -166,6 +166,10 @@ example:
 
 ### executeCommand
 Executes the passing command.
+Pushes the command in a queue and calls the sendCommand function.
+
+### sendCommand
+Sends the passing command.
 Implement the executeCommand mechanism.
 
 ### executeTask
@@ -821,13 +825,18 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 # Release Notes
 
+## v1.5.1
+
+- optimization for hibernate/sleep/standby
+    BREAKING! Connection: executeCommand -> sendCommand
+
 ## v1.5.0
 
 - ftdi integration
-- 	FtdiDevice
-- 	FtdiSerialDevice
-- 	FtdiDeviceLoader
-- 	EventedFtdiDeviceLoader
+    FtdiDevice
+    FtdiSerialDevice
+    FtdiDeviceLoader
+    EventedFtdiDeviceLoader
 
 ## v1.4.0
 

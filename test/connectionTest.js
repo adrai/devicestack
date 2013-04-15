@@ -6,6 +6,18 @@ var expect = require('expect.js'),
 
 describe('Connection', function() {
 
+  after(function() {
+    var pm;
+
+    try {
+      pm = require('pm-notify');
+    } catch(e) {}
+
+    if (pm) {
+      pm.stopMonitoring();
+    }
+  });
+
   var connection;
   var device = new Device();
 

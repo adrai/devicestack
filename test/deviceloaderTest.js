@@ -3,6 +3,18 @@ var expect = require('expect.js'),
 
 describe('DeviceLoader', function() {
 
+  after(function() {
+    var pm;
+
+    try {
+      pm = require('pm-notify');
+    } catch(e) {}
+
+    if (pm) {
+      pm.stopMonitoring();
+    }
+  });
+
   describe('having a deviceloader object', function() {
 
     it('it should have all expected values', function() {

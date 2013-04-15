@@ -3,6 +3,18 @@ var expect = require('expect.js'),
 
 describe('DeviceGuider', function() {
 
+  after(function() {
+    var pm;
+
+    try {
+      pm = require('pm-notify');
+    } catch(e) {}
+
+    if (pm) {
+      pm.stopMonitoring();
+    }
+  });
+
   describe('having a deviceguider object', function() {
 
     it('it should have all expected values', function() {
@@ -68,7 +80,7 @@ describe('DeviceGuider', function() {
       describe('not changing the mode', function() {
 
         it('it should return false', function() {
-            
+
           var result = deviceguider.changeConnectionMode('manualconnect');
           expect(result).to.eql(false);
 

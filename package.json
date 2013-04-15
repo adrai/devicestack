@@ -1,6 +1,6 @@
 {
   "name": "devicestack",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "This module helps you to represent a device and its protocol.",
   "private": false,
   "main": "index.js",
@@ -22,7 +22,8 @@
   "optionalDependencies": {
     "serialport": ">=1.1.0",
     "ftdi": ">=1.0.0",
-    "usb-detection": ">=1.0.0"
+    "usb-detection": ">=1.0.0",
+    "pm-notify": ">=1.0.0"
   },
   "devDependencies": {
     "mocha": ">=1.0.1",
