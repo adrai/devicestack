@@ -13,6 +13,16 @@ describe('Device', function() {
     if (pm) {
       pm.stopMonitoring();
     }
+
+    var detection;
+
+    try {
+      detection = require('usb-detection');
+    } catch(e) {}
+
+    if (detection) {
+      detection.stopMonitoring();
+    }
   });
 
   describe('without Connection object', function() {

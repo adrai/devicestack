@@ -16,6 +16,16 @@ describe('Connection', function() {
     if (pm) {
       pm.stopMonitoring();
     }
+
+    var detection;
+
+    try {
+      detection = require('usb-detection');
+    } catch(e) {}
+
+    if (detection) {
+      detection.stopMonitoring();
+    }
   });
 
   var connection;

@@ -13,6 +13,16 @@ describe('DeviceGuider', function() {
     if (pm) {
       pm.stopMonitoring();
     }
+
+    var detection;
+
+    try {
+      detection = require('usb-detection');
+    } catch(e) {}
+
+    if (detection) {
+      detection.stopMonitoring();
+    }
   });
 
   describe('having a deviceguider object', function() {
