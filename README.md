@@ -828,15 +828,17 @@ For documentation look at [enum](https://github.com/adrai/enum).
 ## v1.5.1
 
 - optimization for hibernate/sleep/standby
-    BREAKING! Connection: executeCommand -> sendCommand
+
+  ATTENTION! Connection: executeCommand -> sendCommand
 
 ## v1.5.0
 
 - ftdi integration
-    FtdiDevice
-    FtdiSerialDevice
-    FtdiDeviceLoader
-    EventedFtdiDeviceLoader
+
+  FtdiDevice
+  FtdiSerialDevice
+  FtdiDeviceLoader
+  EventedFtdiDeviceLoader
 
 ## v1.4.0
 
