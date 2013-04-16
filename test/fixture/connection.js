@@ -43,8 +43,7 @@ MyConnection.prototype.getWaitingCommands = function(frame) {
   });
 };
 
-MyConnection.prototype.executeCommand = function(command, callback) {
-  this.commandQueue.push({ command: command, callback: callback });
+MyConnection.prototype.sendCommand = function(command, callback) {
   this.frameHandler.send(command.data);
 };
 

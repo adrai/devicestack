@@ -575,7 +575,7 @@ For documentation look at [enum](https://github.com/adrai/enum).
 	    if (callback) callback();
 	};
 
-	MyConnection.prototype.executeCommand = function(commandData, callback) {
+	MyConnection.prototype.sendCommand = function(commandData, callback) {
 	    this.frameHandler.send('send', commandData);
 	};
 
