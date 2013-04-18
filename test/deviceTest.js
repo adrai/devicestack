@@ -5,22 +5,11 @@ describe('Device', function() {
 
   after(function() {
     var pm;
-
-    try {
-      pm = require('pm-notify');
-    } catch(e) {}
-
-    if (pm) {
+    if ((pm = global['pm-notify'])) {
       pm.stopMonitoring();
     }
-
     var detection;
-
-    try {
-      detection = require('usb-detection');
-    } catch(e) {}
-
-    if (detection) {
+    if ((detection = global['usb-detection'])) {
       detection.stopMonitoring();
     }
   });
