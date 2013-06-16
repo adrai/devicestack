@@ -845,6 +845,7 @@ For documentation look at [enum](https://github.com/adrai/enum).
 - default serial device loaders uses the global serial device loader under the hood
 
 
+
 # License
 
 Copyright (c) 2013 Adriano Raiano
