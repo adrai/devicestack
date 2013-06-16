@@ -7,7 +7,7 @@ function MyCommand(firstByte) {
 
   firstByte = firstByte || 0x01;
 
-	this.data = [firstByte, 0x02, 0x03];
+  this.data = [firstByte, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09];
 }
 
 util.inherits(MyCommand, Command);

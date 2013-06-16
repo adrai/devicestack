@@ -174,7 +174,7 @@ describe('Device', function() {
           device.once('receive', function() {
             done();
           });
-          device.send();
+          device.send([]);
 
         });
 
