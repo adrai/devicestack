@@ -52,11 +52,12 @@ Each of the following software components can be used separately if you want...
 - require('devicestack').Task
 
 ## Prototype hirarchy
-Device -> SerialDevice -> FtdiSerialDevice
-Device -> FtdiDevice -> FtdiSerialDevice
-DeviceLoader -> SerialDeviceLoader
-DeviceLoader -> FtdiDeviceLoader -> EventedFtdiDeviceLoader
-DeviceGuider -> SerialDeviceGuider
+
+	Device -> SerialDevice -> FtdiSerialDevice
+	Device -> FtdiDevice -> FtdiSerialDevice
+	DeviceLoader -> SerialDeviceLoader
+	DeviceLoader -> FtdiDeviceLoader -> EventedFtdiDeviceLoader
+	DeviceGuider -> SerialDeviceGuider
 
 ## device
 Device represents your physical device.
