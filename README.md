@@ -51,6 +51,13 @@ Each of the following software components can be used separately if you want...
 - require('devicestack').Command
 - require('devicestack').Task
 
+## Prototype hirarchy
+Device -> SerialDevice -> FtdiSerialDevice
+Device -> FtdiDevice -> FtdiSerialDevice
+DeviceLoader -> SerialDeviceLoader
+DeviceLoader -> FtdiDeviceLoader -> EventedFtdiDeviceLoader
+DeviceGuider -> SerialDeviceGuider
+
 ## device
 Device represents your physical device.
 
@@ -843,7 +850,6 @@ For documentation look at [enum](https://github.com/adrai/enum).
 ## v1.4.0
 
 - default serial device loaders uses the global serial device loader under the hood
-
 
 
 # License
