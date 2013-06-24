@@ -44,6 +44,7 @@ Each of the following software components can be used separately if you want...
 - require('devicestack').FrameHandler
 - require('devicestack').DeviceLoader
 - require('devicestack').SerialDeviceLoader
+- require('devicestack').EventedSerialDeviceLoader
 - require('devicestack').FtdiDeviceLoader
 - require('devicestack').EventedFtdiDeviceLoader
 - require('devicestack').DeviceGuider
@@ -55,7 +56,7 @@ Each of the following software components can be used separately if you want...
 
 	Device -> SerialDevice -> FtdiSerialDevice
 	Device -> FtdiDevice -> FtdiSerialDevice
-	DeviceLoader -> SerialDeviceLoader
+	DeviceLoader -> SerialDeviceLoader -> EventedSerialDeviceLoader
 	DeviceLoader -> FtdiDeviceLoader -> EventedFtdiDeviceLoader
 	DeviceGuider -> SerialDeviceGuider
 
@@ -832,6 +833,11 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 
 # Release Notes
+
+## v1.6.0
+
+- implemented EventedSerialDeviceLoader (for USB devices that virtualizes the COM port)
+- fix for SerialDeviceLoader (bug was only for non-global users)
 
 ## v1.5.1
 

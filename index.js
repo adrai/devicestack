@@ -21,6 +21,7 @@ index.Task = require('./lib/task');
 try {
   index.SerialDevice = require('./lib/serial/device');
   index.SerialDeviceLoader = require('./lib/serial/deviceloader');
+  index.EventedSerialDeviceLoader = require('./lib/serial/eventeddeviceloader');
   index.SerialDeviceGuider = require('./lib/serial/deviceguider');
 } catch(e) { }
 
