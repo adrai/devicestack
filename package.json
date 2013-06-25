@@ -54,6 +54,10 @@
     "task"
   ],
   "author": "adrai",
+  "maintainers":[ {
+     "name": "adrai",
+     "email": "adriano@raiano.ch"
+  }],
   "homepage": "https://github.com/adrai/devicestack",
   "bugs": {
     "url": "https://github.com/adrai/devicestack/issues"
