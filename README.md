@@ -834,6 +834,10 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 # Release Notes
 
+## v1.6.1
+
+- SerialDeviceLoader compare devices by lowercase port name
+
 ## v1.6.0
 
 - implemented EventedSerialDeviceLoader (for USB devices that virtualizes the COM port)
