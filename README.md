@@ -837,6 +837,7 @@ For documentation look at [enum](https://github.com/adrai/enum).
 ## v1.6.1
 
 - SerialDeviceLoader compare devices by lowercase port name
+- emit error on device only if there are listeners
 
 ## v1.6.0
 
