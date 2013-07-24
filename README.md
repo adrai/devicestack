@@ -834,6 +834,10 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 # Release Notes
 
+## v1.6.2
+
+- Added possibility to add multiple vid/pid pairs
+
 ## v1.6.1
 
 - SerialDeviceLoader compare devices by lowercase port name
