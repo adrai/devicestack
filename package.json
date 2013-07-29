@@ -21,8 +21,8 @@
   },
   "optionalDependencies": {
     "serialport": ">=1.1.0",
-    "ftdi": ">=1.0.1",
-    "usb-detection": ">=1.0.1",
+    "ftdi": ">=1.0.2",
+    "usb-detection": ">=1.0.2",
     "pm-notify": ">=1.0.1"
   },
   "devDependencies": {
