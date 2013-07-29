@@ -132,7 +132,7 @@ example:
 ## connection
 Connection will be created from connect of device.
 
-- reacts on open of device, calls `onConnecting` function if exists and emits 'connecting' and 'connect'
+- reacts on open of device, calls `onConnecting` function if exists and emits 'connecting' and 'connect' and emits 'connecting' on device
 - reacts on closing of device and calls close on device
 - reacts on close of device and cleans up
 
@@ -140,7 +140,7 @@ In extended constuctor create the framehandler(s) and subscribe to receive on th
 
 ### close
 Implement the close mechanism.
-Call with optional callback. On closing emit 'disconnecting', call `onDisconnecting` function if exists, on disconnected emit 'disconnect' and call close on device by passing the callback.
+Call with optional callback. On closing emit 'disconnecting', call `onDisconnecting` function if exists, on disconnected emit 'disconnect' and call close on device by passing the callback. Emits 'disconnecting' on device.
 
 - If extending from `require('devicestack').Connection` this mechanism is already defined!
 
@@ -833,6 +833,10 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 
 # Release Notes
+
+## v1.6.3
+
+- DeviceGuider now emits connecting and disconnecting events
 
 ## v1.6.2
 

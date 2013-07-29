@@ -95,6 +95,17 @@ describe('DeviceGuider', function() {
         deviceguider.manualconnect(done);
       });
 
+      it('it should emit connecting', function(done) {
+
+        deviceguider.once('connecting', function(dev) {
+          expect(dev).to.be.an('object');
+
+          done();
+        });
+        deviceguider.autoconnect();
+
+      });
+
       it('it should automatically connect plugged devices', function(done) {
 
         deviceguider.once('connect', function(connection) {
@@ -151,6 +162,17 @@ describe('DeviceGuider', function() {
           });
           deviceguider.autoconnect();
         });
+      });
+
+      it('it should emit disconnecting', function(done) {
+
+        deviceguider.once('disconnecting', function(con) {
+          expect(con).to.be.an('object');
+
+          done();
+        });
+        deviceguider.disconnectDevice(toDisconnect);
+
       });
 
       it('it should emit disconnect', function(done) {

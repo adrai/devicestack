@@ -225,6 +225,24 @@ describe('Device', function() {
 
         });
 
+        it('it should emit connecting', function(done) {
+
+          device.once('connecting', function() {
+            done();
+          });
+          device.connect();
+
+        });
+
+        it('it should emit connect', function(done) {
+
+          device.once('connect', function() {
+            done();
+          });
+          device.connect();
+
+        });
+
         it('it should a new connection property with a generated id', function(done) {
 
           device.once('open', function() {
@@ -255,6 +273,11 @@ describe('Device', function() {
 
       describe('calling disconnect', function() {
 
+        beforeEach(function(done) {
+          device = new Device();
+          device.connect(done);
+        });
+
         it('it should emit closing', function(done) {
 
           device.once('closing', function() {
@@ -267,6 +290,24 @@ describe('Device', function() {
         it('it should emit close', function(done) {
 
           device.once('close', function() {
+            done();
+          });
+          device.disconnect();
+
+        });
+
+        it('it should emit disconnecting', function(done) {
+
+          device.once('disconnecting', function() {
+            done();
+          });
+          device.disconnect();
+
+        });
+
+        it('it should emit disconnect', function(done) {
+
+          device.once('disconnect', function() {
             done();
           });
           device.disconnect();
