@@ -395,7 +395,8 @@ Converts a buffer object to a readable hex string.
 
 ### string | toArray
 Converts a hex string to a byte array.
-	'0100'.toArray() // returns [0x01, 0x00]
+	'0100'.toArray()  // returns [0x01, 0x00]
+	'01-FA'.toArray() // returns [0x01, 0xFA]
 
 ### enum
 The Enum type is automatically registered in node.js.
