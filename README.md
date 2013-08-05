@@ -373,10 +373,6 @@ Build your own tasks looking like this:
 ## utils
 Some utility functions are shipped with this module.
 
-### array | toNumber
-Converts a byte array to a number.
-	[0x01, 0x00].toNumber() // returns 256
-
 ### array | toBuffer
 Converts a byte array to a buffer object.
 	[0x01, 0x00].toBuffer()
@@ -396,18 +392,6 @@ Converts a buffer object to a byte array.
 ### buffer | toHexDebug
 Converts a buffer object to a readable hex string.
 	(new Buffer([0x01, 0x00])).toHexDebug() // returns '01-00'
-
-### buffer | toNumber
-Converts a buffer object to a number.
-	(new Buffer([0x01, 0x00])).toNumber() // returns 256
-
-### number | toArray
-Converts a number to a byte array.
-	(256).toArray() // returns [0x01, 0x00]
-
-### number | toBuffer
-Converts a number to a buffer object.
-	(256).toArray() // returns [0x01, 0x00]
 
 ### string | toArray
 Converts a hex string to a byte array.

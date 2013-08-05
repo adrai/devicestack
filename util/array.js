@@ -54,22 +54,3 @@ if (!Array.prototype.toBuffer) {
     return new Buffer(this);
   };
 }
-
-if (!Array.prototype.toNumber) {
-
-  /**
-   * Converts a "byte" array to a number.
-   * @return {Number}       The result number.
-   * 
-   * @example:
-   *     [0x01, 0x00].toNumber(); // returns 256
-   */
-  Array.prototype.toNumber = function() {
-    var value = 0;
-    for ( var i = 0; i < this.length; i++) {
-      value = (value * 256) + this[i];
-    }
-
-    return value;
-  };
-}
