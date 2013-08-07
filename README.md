@@ -819,13 +819,17 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 # Release Notes
 
+## v1.6.4
+
+- updated dependencies
+
 ## v1.6.3
 
 - DeviceGuider now emits connecting and disconnecting events
 
 ## v1.6.2
 
-- Added possibility to add multiple vid/pid pairs
+- added possibility to add multiple vid/pid pairs
 
 ## v1.6.1
 
