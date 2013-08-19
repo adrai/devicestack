@@ -71,6 +71,19 @@ describe('Connection', function() {
 
       });
 
+      describe('of a command that validates an error', function() {
+
+        it('it should callback that error', function(done) {
+
+          connection.executeCommand(new Command(-1), function(err) {
+            expect(err).to.be.ok();
+            done();
+          });
+
+        });
+
+      });
+
     });
 
     describe('calling executeTask', function() {
@@ -126,6 +139,32 @@ describe('Connection', function() {
           connection.executeTask(new Task(1), task1Clb);
           connection.executeTask(new Task(2), task2Clb);
           connection.executeTask(new Task(3), true, task3Clb);
+
+        });
+
+      });
+
+      describe('of a task that validates an error', function() {
+
+        it('it should callback that error', function(done) {
+
+          connection.executeTask(new Task(111), function(err) {
+            expect(err).to.be.ok();
+            done();
+          });
+
+        });
+
+      });
+
+      describe('of a task that validates an error in a command that he executes', function() {
+
+        it('it should callback that error', function(done) {
+
+          connection.executeTask(new Task(-1), function(err) {
+            expect(err).to.be.ok();
+            done();
+          });
 
         });
 

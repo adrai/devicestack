@@ -175,6 +175,8 @@ example:
 
 ### executeCommand
 Executes the passing command.
+If the initialize function is present it will validate the arguments of the command.
+If necessary for validation reason the initialize function can throw errors.
 Pushes the command in a queue and calls the sendCommand function.
 
 ### sendCommand
@@ -183,6 +185,8 @@ Implement the executeCommand mechanism.
 
 ### executeTask
 Executes the passing task.
+If the initialize function is present it will validate the arguments of the task.
+If necessary for validation reason the initialize function can throw errors.
 
 - If extending from `require('devicestack').Connection` this mechanism is already defined!
 
@@ -329,21 +333,27 @@ Call with the portname and optional callback it will disconnect that device and 
 Build your own commands looking like this:
 
 	var Command = require('../../index').Command,
-		  util = require('util');
+	        util = require('util');
 
 	function MyCommand(firstByte) {
 		// call super class
-	  Command.call(this);
-
-	  firstByte = firstByte || 0x01;
-
-		this.data = [firstByte, 0x02, 0x03];
+		Command.call(this, arguments);
 	}
 
 	util.inherits(MyCommand, Command);
 
+	MyCommand.prototype.initialize = function(firstByte) {
+		firstByte = firstByte || 0x01;
+
+		if (firstByte < 0) {
+			throw new Error('wrong value');
+		}
+
+		this.data = [firstByte, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09];
+	};
+
 	MyCommand.prototype.execute = function(connection, callback) {
-	  connection.executeCommand(this, callback);
+		connection.executeCommand(this, callback);
 	};
 
 	module.exports = MyCommand;
@@ -353,16 +363,22 @@ Build your own tasks looking like this:
 
 	var Task = require('../../index').Task,
 			util = require('util'),
-	    MyCommand = require('./myCommand');
+	    	Command = require('./command');
 
 	function MyTask(identifier) {
 		// call super class
-	  Task.call(this);
-
-		this.command = new MyCommand(identifier);
+		Task.call(this, arguments);
 	}
 
 	util.inherits(MyTask, Task);
+
+	MyTask.prototype.initialize = function(identifier) {
+		if (identifier === 111) {
+			throw new Error('wrong value in task');
+		}
+
+		this.command = new Command(identifier);
+	};
 
 	MyTask.prototype.perform = function(connection, callback) {
 		this.execute(this.command, connection, callback);
@@ -818,6 +834,10 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 
 # Release Notes
+
+## v1.7.0
+
+- introduce command and task validation (initialize function)
 
 ## v1.6.4
 
