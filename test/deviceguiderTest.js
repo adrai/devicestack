@@ -106,12 +106,37 @@ describe('DeviceGuider', function() {
 
       });
 
+      it('it should emit connectionStateChanged', function(done) {
+
+        deviceguider.once('connectionStateChanged', function(res) {
+          expect(res.state).to.eql('connecting');
+          expect(res.device).to.be.an('object');
+
+          done();
+        });
+        deviceguider.autoconnect();
+
+      });
+
       it('it should automatically connect plugged devices', function(done) {
 
         deviceguider.once('connect', function(connection) {
           expect(connection).to.be.an('object');
 
           done();
+        });
+        deviceguider.autoconnect();
+
+      });
+
+      it('it should emit connectionStateChanged', function(done) {
+
+        var handle;
+        deviceguider.on('connectionStateChanged', handle = function(res) {
+          if (res.state === 'connect') {
+            deviceguider.off('connectionStateChanged', handle);
+            done();
+          }
         });
         deviceguider.autoconnect();
 
@@ -131,6 +156,19 @@ describe('DeviceGuider', function() {
           expect(connection).to.be.an('object');
 
           done();
+        });
+        deviceguider.autoconnectOne();
+
+      });
+
+      it('it should emit connectionStateChanged', function(done) {
+
+        var handle;
+        deviceguider.on('connectionStateChanged', handle = function(res) {
+          if (res.state === 'connect') {
+            deviceguider.off('connectionStateChanged', handle);
+            done();
+          }
         });
         deviceguider.autoconnectOne();
 
@@ -175,10 +213,35 @@ describe('DeviceGuider', function() {
 
       });
 
+      it('it should emit connectionStateChanged', function(done) {
+
+        deviceguider.once('connectionStateChanged', function(res) {
+          expect(res.state).to.be.eql('disconnecting');
+          expect(res.device).to.be.an('object');
+
+          done();
+        });
+        deviceguider.disconnectDevice(toDisconnect);
+
+      });
+
       it('it should emit disconnect', function(done) {
 
         deviceguider.once('disconnect', function(connection) {
           done();
+        });
+        deviceguider.disconnectDevice(toDisconnect);
+
+      });
+
+      it('it should emit connectionStateChanged', function(done) {
+
+        var handle;
+        deviceguider.on('connectionStateChanged', handle = function(res) {
+          if (res.state === 'disconnect') {
+            deviceguider.off('connectionStateChanged', handle);
+            done();
+          }
         });
         deviceguider.disconnectDevice(toDisconnect);
 
@@ -217,6 +280,19 @@ describe('DeviceGuider', function() {
 
         deviceguider.once('disconnect', function(connection) {
           done();
+        });
+        deviceguider.closeConnection(toClose.id);
+
+      });
+
+      it('it should emit connectionStateChanged', function(done) {
+
+        var handle;
+        deviceguider.on('connectionStateChanged', handle = function(res) {
+          if (res.state === 'disconnect') {
+            deviceguider.off('connectionStateChanged', handle);
+            done();
+          }
         });
         deviceguider.closeConnection(toClose.id);
 

@@ -272,6 +272,8 @@ Call with optional callback and call callback with an array of devices.
 
 ## deviceguider
 A deviceguider emits 'plug' for new attached devices, 'unplug' for removed devices, emits 'connect' for connected devices and emits 'disconnect' for disconnected devices.
+- Emits 'connecting' and 'disconnecting' with device object.
+- Emits 'connectionStateChanged' with state and connection or device.
 
 ### getCurrentState
 Call with callback and it calls the callback with the current state, containing the connectionMode, the list of plugged devices and the list of connected devices.
@@ -802,6 +804,13 @@ For documentation look at [enum](https://github.com/adrai/enum).
 	    if (currentState.plugged.length === 0) { console.log('No devices found!'); /*return process.exit();*/ }
 	});
 
+	myDeviceguider.on('connectionStateChanged', function(evt) {
+	    // evt-> { state: 'connect', connection: /* connection */ }
+		  // evt-> { state: 'disconnect', connection: /* connection */ }
+		  // evt-> { state: 'connecting', device: /* device */ }
+			// evt-> { state: 'disconnecting', device: /* device */ }
+	});
+
 
 
 	// V1: autoconnect first device...
@@ -834,6 +843,10 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 
 # Release Notes
+
+## v1.8.0
+
+- introduce connectionStateChanged on DeviceGuider
 
 ## v1.7.0
 
