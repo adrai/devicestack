@@ -844,6 +844,10 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 # Release Notes
 
+## v1.8.1
+
+- connection: try to better catch errors while sending commands
+
 ## v1.8.0
 
 - introduce connectionStateChanged on DeviceGuider
