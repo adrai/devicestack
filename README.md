@@ -416,10 +416,6 @@ Converts a hex string to a byte array.
 	'0100'.toArray()  // returns [0x01, 0x00]
 	'01-FA'.toArray() // returns [0x01, 0xFA]
 
-### enum
-The Enum type is automatically registered in node.js.
-For documentation look at [enum](https://github.com/adrai/enum).
-
 
 # Installation
 
@@ -843,6 +839,10 @@ For documentation look at [enum](https://github.com/adrai/enum).
 
 
 # Release Notes
+
+## v1.8.2
+
+- The Enum type is not included automatically in devicestack. Please use it directly from [enum](https://github.com/adrai/enum).
 
 ## v1.8.1
 

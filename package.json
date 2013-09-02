@@ -1,6 +1,6 @@
 {
   "name": "devicestack",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "This module helps you to represent a device and its protocol.",
   "private": false,
   "main": "index.js",
@@ -16,8 +16,7 @@
     "eventemitter2": ">=0.4.10",
     "lodash": ">=0.8.2",
     "node-uuid": ">=1.4.0",
-    "async": ">=0.1.22",
-    "enum": ">=0.2.4"
+    "async": ">=0.1.22"
   },
   "optionalDependencies": {
     "serialport": ">=1.1.3",
