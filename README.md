@@ -840,6 +840,10 @@ Converts a hex string to a byte array.
 
 # Release Notes
 
+## v1.8.3
+
+- connection: added dequeueCommand function
+
 ## v1.8.2
 
 - The Enum type is not included automatically in devicestack. Please use it directly from [enum](https://github.com/adrai/enum).
