@@ -52,7 +52,7 @@ Each of the following software components can be used separately if you want...
 - require('devicestack').Command
 - require('devicestack').Task
 
-## Prototype hirarchy
+## Prototype hierarchy
 
 	Device -> SerialDevice -> FtdiSerialDevice
 	Device -> FtdiDevice -> FtdiSerialDevice
