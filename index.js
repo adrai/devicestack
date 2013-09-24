@@ -23,18 +23,26 @@ try {
   index.SerialDeviceLoader = require('./lib/serial/deviceloader');
   index.EventedSerialDeviceLoader = require('./lib/serial/eventeddeviceloader');
   index.SerialDeviceGuider = require('./lib/serial/deviceguider');
-} catch(e) { }
+} catch(e) {
+  console.log(e.message);
+}
 
 try {
   index.FtdiDevice = require('./lib/ftdi/device');
   index.FtdiDeviceLoader = require('./lib/ftdi/deviceloader');
   index.EventedFtdiDeviceLoader = require('./lib/ftdi/eventeddeviceloader');
-} catch(e) { }
+} catch(e) {
+  console.log(e.message);
+}
 
 try {
   index.FtdiSerialDevice = require('./lib/ftdiserial/device');
-} catch(e) { }
+} catch(e) {
+  console.log(e.message);
+}
 
 try {
   index.UsbDeviceLoader = require('./lib/usb/deviceloader');
-} catch(e) { }
+} catch(e) {
+  console.log(e.message);
+}

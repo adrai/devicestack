@@ -840,6 +840,10 @@ Converts a hex string to a byte array.
 
 # Release Notes
 
+## v1.8.4
+
+- print some error messages
+
 ## v1.8.3
 
 - connection: added dequeueCommand function
