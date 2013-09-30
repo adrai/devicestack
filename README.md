@@ -211,6 +211,11 @@ IMPORTANT!!! Call this function when a command answer is handled!
 
 - If extending from `require('devicestack').Connection` this mechanism is already defined!
 
+### isByteArray
+Checks if the passed argument is an array that contains byte values.
+
+- If extending from `require('devicestack').Connection` this function is already defined!
+
 ## framehandler(s)
 You can have one or multiple framehandlers. A framhandler receives data from the upper layer and sends it to the lower layer by wrapping some header or footer information. A framehandler receives data from lower layer and sends it to the upper layer by unwrapping some header or footer information. The lowest layer for a framehandler is the device and the topmost ist the connection.
 
@@ -839,6 +844,10 @@ Converts a hex string to a byte array.
 
 
 # Release Notes
+
+## v1.8.5
+
+- Connection: added function isByteArray
 
 ## v1.8.4
 
