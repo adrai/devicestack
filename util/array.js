@@ -81,7 +81,7 @@ if (!Array.isByteArray) {
     }
 
     for (var i = 0, len = data.length; i < len; i++) {
-      if (data[i] === null || data[i] === undefined || data[i] < 0x00 || data[i] > 0xff) {
+      if (typeof(data[i]) !== 'number' || data[i] < 0x00 || data[i] > 0xFF) {
         return false;
       }
     }
