@@ -44,6 +44,13 @@ MyConnection.prototype.getWaitingCommands = function(frame) {
 };
 
 MyConnection.prototype.sendCommand = function(command, callback) {
+  command.data = command.data || [];
+  if (!Array.isByteArray(command.data)) {
+    this.dequeueCommand(command);
+    if (this.log) { this.log('Wrong data for COMMAND: ' + command.constructor.name); }
+    if (callback) { callback(new Error('Wrong command data!')); }
+    return;
+  }
   this.frameHandler.send(command.data);
 };
 

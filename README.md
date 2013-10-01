@@ -211,10 +211,6 @@ IMPORTANT!!! Call this function when a command answer is handled!
 
 - If extending from `require('devicestack').Connection` this mechanism is already defined!
 
-### isByteArray
-Checks if the passed argument is an array that contains byte values.
-
-- If extending from `require('devicestack').Connection` this function is already defined!
 
 ## framehandler(s)
 You can have one or multiple framehandlers. A framhandler receives data from the upper layer and sends it to the lower layer by wrapping some header or footer information. A framehandler receives data from lower layer and sends it to the upper layer by unwrapping some header or footer information. The lowest layer for a framehandler is the device and the topmost ist the connection.
@@ -421,6 +417,9 @@ Converts a hex string to a byte array.
 	'0100'.toArray()  // returns [0x01, 0x00]
 	'01-FA'.toArray() // returns [0x01, 0xFA]
 
+### array | isByteArray
+Checks if the passed argument is an array that contains byte values.
+	Array.isByteArray([0x01, 0x00]) // returns true
 
 # Installation
 
@@ -844,6 +843,10 @@ Converts a hex string to a byte array.
 
 
 # Release Notes
+
+## v1.8.6
+
+- Connection: moved function isByteArray to Array.isByteArray
 
 ## v1.8.5
 

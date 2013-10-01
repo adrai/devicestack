@@ -9,6 +9,7 @@ function MyCommand(firstByte) {
 util.inherits(MyCommand, Command);
 
 MyCommand.prototype.initialize = function(firstByte) {
+
   firstByte = firstByte || 0x01;
 
   if (firstByte < 0) {

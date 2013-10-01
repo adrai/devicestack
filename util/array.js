@@ -54,3 +54,40 @@ if (!Array.prototype.toBuffer) {
     return new Buffer(this);
   };
 }
+
+if(!Array.isArray) {
+
+  Array.isArray = function (vArg) {
+    return Object.prototype.toString.call(vArg) === "[object Array]";
+  };
+
+}
+
+if (!Array.isByteArray) {
+
+  /**
+   * Checks if the passed argument is an array that contains byte values.
+   * 
+   * @param  {Array} data The array to be checked.
+   * @return {Boolean}    True if it's a byte array, otherwise false.
+   *
+   * @example:
+   *     Array.isByteArray([0x01, 0x00]) // returns true
+   */
+  Array.isByteArray = function(data) {
+
+    if (!data || !Array.isArray(data)) {
+      return false;
+    }
+
+    for (var i = 0, len = data.length; i < len; i++) {
+      if (data[i] === null || data[i] === undefined || data[i] < 0x00 || data[i] > 0xff) {
+        return false;
+      }
+    }
+
+    return true;
+
+  };
+
+}
