@@ -32,6 +32,7 @@ describe('Connection', function() {
       expect(connection.close).to.be.a('function');
       expect(connection.set).to.be.a('function');
       expect(connection.get).to.be.a('function');
+      expect(connection.has).to.be.a('function');
       expect(connection.toJSON).to.be.a('function');
       expect(connection.executeCommand).to.be.a('function');
       expect(connection.executeTask).to.be.a('function');

@@ -128,6 +128,15 @@ example:
 
 	device.get('firmwareVersion'); // returns '0.0.1'
 
+### has
+Returns `true` if the attribute contains a value that is not null or undefined.
+
+- If extending from `require('devicestack').Device` this mechanism is already defined!
+
+example:
+
+	device.has('firmwareVersion'); // returns true or false
+
 
 ## connection
 Connection will be created from connect of device.
@@ -172,6 +181,15 @@ Gets an attribute of the connection.
 example:
 
 	connection.get('firmwareVersion'); // returns '0.0.1'
+
+### has
+Returns `true` if the attribute contains a value that is not null or undefined.
+
+- If extending from `require('devicestack').Connection` this mechanism is already defined!
+
+example:
+
+	connection.has('firmwareVersion'); // returns true or false
 
 ### executeCommand
 Executes the passing command.
@@ -843,6 +861,10 @@ Checks if the passed argument is an array that contains byte values.
 
 
 # Release Notes
+
+## vx.y.z
+
+- impemented has function for Device and Connection.
 
 ## v1.8.6
 

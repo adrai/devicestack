@@ -29,6 +29,7 @@ describe('Device', function() {
         expect(device.send).to.be.a('function');
         expect(device.set).to.be.a('function');
         expect(device.get).to.be.a('function');
+        expect(device.has).to.be.a('function');
         expect(device.toJSON).to.be.a('function');
 
       });
