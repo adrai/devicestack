@@ -328,6 +328,34 @@ describe('Device', function() {
 
         });
 
+        describe('having disconnected', function() {
+
+          it('it should have deleted the connection object', function(done) {
+
+            device.once('disconnect', function() {
+              expect(device.connection).not.to.be.ok();
+              done();
+            });
+            device.disconnect();
+
+          });
+
+        });
+
+        describe('having closed', function() {
+
+          it('it should have deleted the connection object', function(done) {
+
+            device.once('close', function() {
+              expect(device.connection).not.to.be.ok();
+              done();
+            });
+            device.disconnect();
+
+          });
+
+        });
+
       });
 
     });
