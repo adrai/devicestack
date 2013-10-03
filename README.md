@@ -864,7 +864,7 @@ Checks if the passed argument is an array that contains byte values.
 
 ## vx.y.z
 
-- impemented has function for Device and Connection.
+- impemented has function for Device and Connection
 
 ## v1.8.6
 
