@@ -18,6 +18,8 @@
 
 This module helps you to represent a device and its protocol.
 
+[Release notes](https://github.com/adrai/devicestack/blob/master/releasenotes.md)
+
 <pre>
    ___________________________________________________   
   |                                   |          |    |  
@@ -859,10 +861,6 @@ Checks if the passed argument is an array that contains byte values.
 	});
 	myDeviceguider.connect(port[, function(err, device, connection) {}]);
 
-
-# Release Notes
-
-[Release notes](https://github.com/adrai/devicestack/blob/master/releasenotes.md)
 
 
 # License
