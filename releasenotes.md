@@ -1,7 +1,8 @@
-## vx.y.z
+## v1.8.7
 
 - impemented has function for Device and Connection
 - Warning! initialize function now passes connection as first argument and after that all other arguments passed by the constructor!
+- refacotred error objects
 
 ## v1.8.6
 
