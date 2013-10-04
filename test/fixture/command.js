@@ -8,7 +8,7 @@ function MyCommand(firstByte) {
 
 util.inherits(MyCommand, Command);
 
-MyCommand.prototype.initialize = function(firstByte) {
+MyCommand.prototype.initialize = function(connection, firstByte) {
 
   firstByte = firstByte || 0x01;
 

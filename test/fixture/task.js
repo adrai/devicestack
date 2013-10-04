@@ -9,7 +9,7 @@ function MyTask(identifier) {
 
 util.inherits(MyTask, Task);
 
-MyTask.prototype.initialize = function(identifier) {
+MyTask.prototype.initialize = function(connection, identifier) {
   if (identifier === 111) {
     throw new Error('wrong value in task');
   }
