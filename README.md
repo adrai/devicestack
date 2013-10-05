@@ -356,27 +356,48 @@ Call with the portname and optional callback it will disconnect that device and 
 Build your own commands looking like this:
 
 	var Command = require('../../index').Command,
-	        util = require('util');
+	    util = require('util');
 
 	function MyCommand(firstByte) {
-		// call super class
-		Command.call(this, arguments);
+	  // call super class
+	  Command.call(this, arguments);
 	}
 
 	util.inherits(MyCommand, Command);
 
-	MyCommand.prototype.initialize = function(firstByte) {
-		firstByte = firstByte || 0x01;
+	// if argumentsSchema is defined it will validates the passed constructor arguments
+	MyCommand.prototype.argumentsSchema = {
+	  type: 'array',
+	  items: [
+	    {
+	      anyOf: [
+	        {
+	          type: 'number'
+	        },
+	        {
+	          type: 'undefined'
+	        }
+	      ]
+	    },
+	    {
+	      type: 'string'
+	    }
+	  ]
+	};
 
-		if (firstByte < 0) {
-			throw new Error('wrong value');
-		}
+	MyCommand.prototype.initialize = function(connection, firstByte) {
 
-		this.data = [firstByte, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09];
+	  firstByte = firstByte || 0x01;
+
+	  if (firstByte < 0) {
+	    throw new Error('wrong value');
+	  }
+
+	  this.data = [firstByte, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09];
 	};
 
 	MyCommand.prototype.execute = function(connection, callback) {
-		connection.executeCommand(this, callback);
+	  connection.executeCommand(this, callback);
 	};
 
 	module.exports = MyCommand;
@@ -385,26 +406,39 @@ Build your own commands looking like this:
 Build your own tasks looking like this:
 
 	var Task = require('../../index').Task,
-			util = require('util'),
-	    	Command = require('./command');
+	    util = require('util'),
+	    Command = require('./command');
 
 	function MyTask(identifier) {
-		// call super class
-		Task.call(this, arguments);
+	  // call super class
+	  Task.call(this, arguments);
 	}
 
 	util.inherits(MyTask, Task);
 
-	MyTask.prototype.initialize = function(identifier) {
-		if (identifier === 111) {
-			throw new Error('wrong value in task');
-		}
+	// if argumentsSchema is defined it will validates the passed constructor arguments
+	MyTask.prototype.argumentsSchema = {
+	  type: 'array',
+	  minItems: 0,
+	  items: [
+	    {
+	    },
+	    {
+	      type: 'string'
+	    }
+	  ]
+	};
 
-		this.command = new Command(identifier);
+	MyTask.prototype.initialize = function(connection, identifier) {
+	  if (identifier === 111) {
+	    throw new Error('wrong value in task');
+	  }
+
+	  this.command = new Command(identifier);
 	};
 
 	MyTask.prototype.perform = function(connection, callback) {
-		this.execute(this.command, connection, callback);
+	  this.execute(this.command, connection, callback);
 	};
 
 	module.exports = MyTask;

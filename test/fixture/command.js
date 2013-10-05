@@ -8,6 +8,25 @@ function MyCommand(firstByte) {
 
 util.inherits(MyCommand, Command);
 
+MyCommand.prototype.argumentsSchema = {
+  type: 'array',
+  items: [
+    {
+      anyOf: [
+        {
+          type: 'number'
+        },
+        {
+          type: 'undefined'
+        }
+      ]
+    },
+    {
+      type: 'string'
+    }
+  ]
+};
+
 MyCommand.prototype.initialize = function(connection, firstByte) {
 
   firstByte = firstByte || 0x01;

@@ -2,7 +2,8 @@ var expect = require('expect.js'),
     Connection = require('./fixture/connection'),
     Device = require('./fixture/device'),
     Task = require('./fixture/task'),
-    Command = require('./fixture/command');
+    Command = require('./fixture/command'),
+    ValidationError = require('../lib/validationError');
 
 describe('Connection', function() {
 
@@ -72,12 +73,29 @@ describe('Connection', function() {
 
       });
 
+      describe('of a command that validates by schema', function() {
+
+        it('it should callback a ValidationError', function(done) {
+
+          connection.executeCommand(new Command(0, true), function(err) {
+            expect(err).to.be.ok();
+            expect(err).to.be.an(Error);
+            expect(err).to.be.a(ValidationError);
+            done();
+          });
+
+        });
+
+      });
+
       describe('of a command that validates an error', function() {
 
         it('it should callback that error', function(done) {
 
           connection.executeCommand(new Command(-1), function(err) {
             expect(err).to.be.ok();
+            expect(err).to.be.an(Error);
+            expect(err).not.to.be.a(ValidationError);
             done();
           });
 
@@ -145,12 +163,29 @@ describe('Connection', function() {
 
       });
 
+      describe('of a task that validates by schema', function() {
+
+        it('it should callback a ValidationError', function(done) {
+
+          connection.executeTask(new Task(0, true), function(err) {
+            expect(err).to.be.ok();
+            expect(err).to.be.an(Error);
+            expect(err).to.be.a(ValidationError);
+            done();
+          });
+
+        });
+
+      });
+
       describe('of a task that validates an error', function() {
 
         it('it should callback that error', function(done) {
 
           connection.executeTask(new Task(111), function(err) {
             expect(err).to.be.ok();
+            expect(err).to.be.an(Error);
+            expect(err).not.to.be.a(ValidationError);
             done();
           });
 

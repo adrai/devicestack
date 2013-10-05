@@ -1,3 +1,7 @@
+## v1.9.0
+
+- implemented optional arguments validation by JSON schema for commands and tasks
+
 ## v1.8.7
 
 - impemented has function for Device and Connection
