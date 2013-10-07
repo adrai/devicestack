@@ -18,6 +18,11 @@ index.DeviceGuider = require('./lib/deviceguider');
 index.Command = require('./lib/command');
 index.Task = require('./lib/task');
 
+var tv4 = require('tv4');
+index.addAdditionalValidationSchema = function(ref, schema) {
+  tv4.addSchema(ref, schema);
+};
+
 try {
   index.SerialDevice = require('./lib/serial/device');
   index.SerialDeviceLoader = require('./lib/serial/deviceloader');
