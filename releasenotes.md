@@ -1,3 +1,7 @@
+## vx.y.z
+
+- delete connection if not needed anymore
+
 ## v1.9.0
 
 - implemented optional arguments validation by JSON schema for commands and tasks
