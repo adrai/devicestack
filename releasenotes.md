@@ -1,6 +1,7 @@
-## vx.y.z
+## v1.9.1
 
 - delete connection if not needed anymore
+- better errors for example if calling connect twice
 
 ## v1.9.0
 

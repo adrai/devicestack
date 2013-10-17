@@ -204,24 +204,30 @@ describe('DeviceGuider', function() {
 
       it('it should emit disconnecting', function(done) {
 
+        var called = false;
         deviceguider.once('disconnecting', function(con) {
           expect(con).to.be.an('object');
-
+          called = true;
+        });
+        deviceguider.disconnectDevice(toDisconnect, function() {
+          expect(called).to.eql(true);
           done();
         });
-        deviceguider.disconnectDevice(toDisconnect);
 
       });
 
       it('it should emit connectionStateChanged', function(done) {
 
+        var called = false;
         deviceguider.once('connectionStateChanged', function(res) {
           expect(res.state).to.be.eql('disconnecting');
           expect(res.device).to.be.an('object');
-
+          called = true;
+        });
+        deviceguider.disconnectDevice(toDisconnect, function() {
+          expect(called).to.eql(true);
           done();
         });
-        deviceguider.disconnectDevice(toDisconnect);
 
       });
 

@@ -210,21 +210,31 @@ describe('Connection', function() {
 
     describe('calling disconnect on the device', function() {
 
-      it('it should emit disconnecting', function(done) {
-
-        connection.once('disconnecting', function() {
+      var dev2, conn2;
+      
+      before(function(done) {
+        dev2 = new Device();
+        dev2.connect(function() {
+          conn2 = dev2.connection;
           done();
         });
-        device.disconnect();
+      });
+
+      it('it should emit disconnecting', function(done) {
+
+        conn2.once('disconnecting', function() {
+          done();
+        });
+        dev2.disconnect();
 
       });
 
       it('it should emit disconnect', function(done) {
 
-        connection.once('disconnect', function() {
+        conn2.once('disconnect', function() {
           done();
         });
-        device.disconnect();
+        dev2.disconnect();
 
       });
 
@@ -232,21 +242,31 @@ describe('Connection', function() {
 
     describe('calling close', function() {
 
-      it('it should emit disconnecting', function(done) {
-
-        connection.once('disconnecting', function() {
+      var dev2, conn2;
+      
+      before(function(done) {
+        dev2 = new Device();
+        dev2.connect(function() {
+          conn2 = dev2.connection;
           done();
         });
-        connection.close();
+      });
+
+      it('it should emit disconnecting', function(done) {
+
+        conn2.once('disconnecting', function() {
+          done();
+        });
+        conn2.close();
 
       });
 
       it('it should emit disconnect', function(done) {
 
-        connection.once('disconnect', function() {
+        conn2.once('disconnect', function() {
           done();
         });
-        connection.close();
+        conn2.close();
 
       });
 
@@ -254,7 +274,7 @@ describe('Connection', function() {
 
         it('it should call the callback', function(done) {
 
-          connection.close(function() {
+          conn2.close(function() {
             done();
           });
 
