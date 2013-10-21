@@ -1,3 +1,7 @@
+## v1.9.2
+
+- added postinstall script for optionalDependencies
+
 ## v1.9.1
 
 - delete connection if not needed anymore
