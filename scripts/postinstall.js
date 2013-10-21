@@ -15,8 +15,8 @@ if (process.env.optionalDependencies) {
   async.each(deps, function(p, callback) {
     exec('npm install ' + p + '@' + pkg.optionalDependencies[p], function (err, stdout, stderr) {
       if(err) {
-        console.log('Error installing ' + dependency);
-        console.log('Please use `npm install ' + dependency + ' and install the package manually');
+        console.log('Error installing ' + p);
+        console.log('Please use `npm install ' + p + ' and install the package manually');
       } else {
         console.log(stderr);
       }
