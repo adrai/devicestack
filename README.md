@@ -479,15 +479,6 @@ Checks if the passed argument is an array that contains byte values.
 
     npm install devicestack
 
-## to force installation of optional dependencies use:
-
-    optionalDependencies=true npm install devicestack
-
-    // for windows:
-
-    set optionalDependencies=true
-    npm install devicestack
-
 
 # Usage
 
