@@ -402,6 +402,10 @@ Build your own commands looking like this:
 
 	module.exports = MyCommand;
 
+###BE SURE TO DEFINE JSON SCHEMAS!
+Hint: [http://jsonary.com/documentation/json-schema/](http://jsonary.com/documentation/json-schema/)
+
+
 ## tasks
 Build your own tasks looking like this:
 
@@ -442,6 +446,10 @@ Build your own tasks looking like this:
 	};
 
 	module.exports = MyTask;
+
+###BE SURE TO DEFINE JSON SCHEMAS!
+Hint: [http://jsonary.com/documentation/json-schema/](http://jsonary.com/documentation/json-schema/)
+
 
 ## utils
 Some utility functions are shipped with this module.
