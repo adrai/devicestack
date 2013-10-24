@@ -1,5 +1,6 @@
 ## v1.9.4
 - do not call callback twice if error is throwing on consumer callback
+- stabilize frame handler
 
 ## v1.9.3
 - removed postinstall script for optionalDependencies
