@@ -20,7 +20,7 @@
     "tv4": "=1.0.10"
   },
   "optionalDependencies": {
-    "serialport": ">=1.2.2",
+    "serialport": ">=1.2.3",
     "ftdi": ">=1.0.3",
     "usb-detection": ">=1.0.3",
     "pm-notify": ">=1.0.2"
