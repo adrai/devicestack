@@ -31,7 +31,7 @@
     "istanbul": ">=0.1.44"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "./node_modules/.bin/mocha",
     "cov": "./node_modules/.bin/istanbul cover _mocha"
   },
   "repository": {
