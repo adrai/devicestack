@@ -1,3 +1,6 @@
+## v1.9.5
+- handle errors while connecting
+
 ## v1.9.4
 - do not call callback twice if error is throwing on consumer callback
 - stabilize frame handler
