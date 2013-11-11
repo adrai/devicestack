@@ -1,3 +1,6 @@
+## v1.9.6
+- catch error of command callback and task callback
+
 ## v1.9.5
 - handle errors while connecting
 
