@@ -1,3 +1,6 @@
+## v1.9.7
+- emit disconnect after connect error only if connection is established
+
 ## v1.9.6
 - catch error of command callback and task callback
 
