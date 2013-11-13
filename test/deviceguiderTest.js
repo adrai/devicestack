@@ -19,6 +19,7 @@ describe('DeviceGuider', function() {
     it('it should have all expected values', function() {
 
       expect(deviceguider.getCurrentState).to.be.a('function');
+      expect(deviceguider.setConnectionMode).to.be.a('function');
       expect(deviceguider.autoconnect).to.be.a('function');
       expect(deviceguider.manualconnect).to.be.a('function');
       expect(deviceguider.autoconnectOne).to.be.a('function');
@@ -51,7 +52,7 @@ describe('DeviceGuider', function() {
     describe('calling changeConnectionMode', function() {
 
       beforeEach(function(done) {
-        deviceguider.manualconnect(done);
+        deviceguider.manualconnect(true, done);
       });
 
       describe('changing the mode', function() {
@@ -92,7 +93,7 @@ describe('DeviceGuider', function() {
     describe('calling autoconnect', function() {
 
       beforeEach(function(done) {
-        deviceguider.manualconnect(done);
+        deviceguider.manualconnect(true, done);
       });
 
       it('it should emit connecting', function(done) {
@@ -102,7 +103,7 @@ describe('DeviceGuider', function() {
 
           done();
         });
-        deviceguider.autoconnect();
+        deviceguider.autoconnect(true);
 
       });
 
@@ -114,7 +115,7 @@ describe('DeviceGuider', function() {
 
           done();
         });
-        deviceguider.autoconnect();
+        deviceguider.autoconnect(true);
 
       });
 
@@ -125,7 +126,7 @@ describe('DeviceGuider', function() {
 
           done();
         });
-        deviceguider.autoconnect();
+        deviceguider.autoconnect(true);
 
       });
 
@@ -138,7 +139,7 @@ describe('DeviceGuider', function() {
             done();
           }
         });
-        deviceguider.autoconnect();
+        deviceguider.autoconnect(true);
 
       });
 
@@ -147,7 +148,7 @@ describe('DeviceGuider', function() {
     describe('calling autoconnectOne', function() {
 
       beforeEach(function(done) {
-        deviceguider.manualconnect(done);
+        deviceguider.manualconnect(true, done);
       });
 
       it('it should automatically connect the first plugged device by emitting connect', function(done) {
@@ -157,7 +158,7 @@ describe('DeviceGuider', function() {
 
           done();
         });
-        deviceguider.autoconnectOne();
+        deviceguider.autoconnectOne(true);
 
       });
 
@@ -170,13 +171,13 @@ describe('DeviceGuider', function() {
             done();
           }
         });
-        deviceguider.autoconnectOne();
+        deviceguider.autoconnectOne(true);
 
       });
 
       it('it should automatically connect the first plugged device', function(done) {
 
-        deviceguider.autoconnectOne(function(err, connection) {
+        deviceguider.autoconnectOne(true, function(err, connection) {
           expect(connection).to.be.ok(err);
           expect(connection).to.be.an('object');
 
@@ -192,13 +193,13 @@ describe('DeviceGuider', function() {
       var toDisconnect;
 
       beforeEach(function(done) {
-        deviceguider.manualconnect(function() {
+        deviceguider.manualconnect(true, function() {
           deviceguider.once('connect', function(connection) {
             toDisconnect = connection.device;
 
             done();
           });
-          deviceguider.autoconnect();
+          deviceguider.autoconnect(true);
         });
       });
 
@@ -272,13 +273,13 @@ describe('DeviceGuider', function() {
       var toClose;
 
       beforeEach(function(done) {
-        deviceguider.manualconnect(function() {
+        deviceguider.manualconnect(true, function() {
           deviceguider.once('connect', function(connection) {
             toClose = connection;
 
             done();
           });
-          deviceguider.autoconnect();
+          deviceguider.autoconnect(true);
         });
       });
 

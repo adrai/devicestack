@@ -1,3 +1,9 @@
+## v1.10.0
+- IMPORTANT: DeviceGuider: manualconnect default has been inverted from holdConnections=false to directlyDisconnect=false
+-DeviceGuider: new function setConnectionMode
+-DeviceLoader: new event plugChanged
+-DeviceGuider: new event plugChanged
+
 ## v1.9.7
 - emit disconnect after connect error only if connection is established
 

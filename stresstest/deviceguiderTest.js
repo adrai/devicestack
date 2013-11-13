@@ -19,8 +19,8 @@ deviceguider.on('connect', function(connection) {
 	console.log('connected ' + counterCon + ' times!');
 
 	deviceguider.manualconnect(function() {
-		deviceguider.autoconnectOne();
+		deviceguider.autoconnectOne(true);
 	});
 });
 
-deviceguider.autoconnectOne();
+deviceguider.autoconnectOne(true);

@@ -302,17 +302,22 @@ Call with callback and it calls the callback with the current state, containing 
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### autoconnect
-Call without arguments it emits 'connectionModeChanged'. When plugging a device it will now automatically connect it and emit 'connect'. Already plugged devices will connect immediately.
+Call with optional connectDirectly flag it emits 'connectionModeChanged'. When plugging a device it will now automatically connect it and emit 'connect'. Dependent on the connectDirectly flag already plugged devices will connect immediately.
 
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### autoconnectOne
-Call with optional callback it emits 'connectionModeChanged'. When plugging one device it will now automatically connect one and emit 'connect'. If there is already a plugged device, it will connect immediately and call the callback.
+Call with optional connectDirectly flag and callback it emits 'connectionModeChanged'. When plugging one device it will now automatically connect one and emit 'connect'. Dependent on the connectDirectly flag if there is already a plugged device, it will connect immediately and call the callback.
 
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
 ### manualconnect
-Call with optional holdConnections flag and optional callback it emits 'connectionModeChanged'. When plugging a device it will not connect it. Dependent on the holdConnections flag already connected devices will disconnect immediately and call the callback.
+Call with optional disconnectDirectly flag and optional callback it emits 'connectionModeChanged'. When plugging a device it will not connect it. Dependent on the disconnectDirectly flag already connected devices will disconnect immediately and call the callback.
+
+- If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
+
+### setConnectionMode
+Call with optional options and optional callback it emits 'connectionModeChanged'.
 
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
