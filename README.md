@@ -316,12 +316,12 @@ Call with optional holdConnections flag and optional callback it emits 'connecti
 
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
-### connectDevice
+### connect (alias connectDevice)
 Call with the deviceId or the device and optional callback it will connect that device and call the callback.
 
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
 
-### disconnectDevice
+### disconnect (alias disconnectDevice)
 Call with the deviceId or the device and optional callback it will disconnect that device and call the callback.
 
 - If extending from `require('devicestack').DeviceGuider` this mechanism is already defined!
