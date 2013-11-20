@@ -1,3 +1,6 @@
+## v1.10.1
+- DeviceGuider: fix callback call for autoconnect
+
 ## v1.10.0
 - IMPORTANT: DeviceGuider: manualconnect default has been inverted from holdConnections=false to directlyDisconnect=false
 -DeviceGuider: new function setConnectionMode
