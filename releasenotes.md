@@ -1,4 +1,4 @@
-## v1.10.1
+## v1.10.2
 - DeviceGuider: fix callback call for autoconnect
 
 ## v1.10.0
