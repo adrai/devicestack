@@ -3,7 +3,7 @@ var expect = require('expect.js'),
     Device = require('./fixture/device'),
     Task = require('./fixture/task'),
     Command = require('./fixture/command'),
-    ValidationError = require('../lib/validationError');
+    ValidationError = require('../lib/errors/validationError');
 
 describe('Connection', function() {
 
