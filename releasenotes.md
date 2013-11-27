@@ -1,5 +1,6 @@
 ## v1.10.3
 - DeviceGuider: introduce DeviceNotFound error
+- SerialDevice: introduce PortNotFound and PortAccessDenied error
 
 ## v1.10.2
 - DeviceGuider: fix callback call for autoconnect
