@@ -1,3 +1,6 @@
+## v1.10.4
+- command and task: throw error if validation schema is missing
+
 ## v1.10.3
 - DeviceGuider: introduce DeviceNotFound error
 - SerialDevice: introduce PortNotFound and PortAccessDenied error
