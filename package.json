@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "eventemitter2": "=0.4.13",
-    "lodash": "=2.2.1",
+    "lodash": "=2.4.1",
     "node-uuid": "=1.4.1",
     "async": "=0.2.9",
     "tv4": "=1.0.10"
