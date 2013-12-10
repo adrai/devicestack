@@ -1,3 +1,6 @@
+#### v1.10.5
+- use fix dependency versions
+
 #### v1.10.4
 - command and task: throw error if validation schema is missing
 
