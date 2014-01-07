@@ -1,3 +1,6 @@
+#### v1.10.6
+- connection: try to console log if error is throwing
+
 #### v1.10.5
 - use fix dependency versions
 
