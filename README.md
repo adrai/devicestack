@@ -910,7 +910,6 @@ Checks if the passed argument is an array that contains byte values.
 	myDeviceguider.connect(port[, function(err, device, connection) {}]);
 
 
-
 # License
 
 Copyright (c) 2013 Adriano Raiano
