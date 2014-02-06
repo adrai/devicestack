@@ -1,3 +1,6 @@
+#### v1.10.7
+- DeviceGuider: fix autoconnect issue [#2](https://github.com/adrai/devicestack/issues/2)
+
 #### v1.10.6
 - connection: try to console log if error is throwing
 
