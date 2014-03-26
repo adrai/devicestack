@@ -22,6 +22,9 @@ var tv4 = require('tv4');
 index.addAdditionalValidationSchema = function(ref, schema) {
   tv4.addSchema(ref, schema);
 };
+index.addAdditionalFormatForValidationSchemas = function(ref, fn) {
+  tv4.addFormat(ref, fn);
+};
 
 try {
   index.SerialDevice = require('./lib/serial/device');

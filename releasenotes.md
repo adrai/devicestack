@@ -1,3 +1,6 @@
+#### v1.10.8
+- new function devicestack.addAdditionalFormatForValidationSchemas
+
 #### v1.10.7
 - DeviceGuider: fix autoconnect issue [#2](https://github.com/adrai/devicestack/issues/2)
 
