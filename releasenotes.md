@@ -1,3 +1,6 @@
+#### v1.10.9
+- updated dependencies
+
 #### v1.10.8
 - new function devicestack.addAdditionalFormatForValidationSchemas
 
