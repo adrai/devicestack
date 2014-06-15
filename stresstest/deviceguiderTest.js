@@ -1,8 +1,8 @@
 var deviceguider = require('../test/fixture/deviceguider');
 
-var counterCon = 0
-  , counterDis = 0
-  , counterPlug = 0;
+var counterCon = 0,
+    counterDis = 0,
+    counterPlug = 0;
 
 deviceguider.on('disconnect', function(connection) {
 	counterDis++;

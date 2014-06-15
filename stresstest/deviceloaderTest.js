@@ -1,7 +1,7 @@
 var deviceloader = require('../test/fixture/deviceloader');
 
-var counterPlug = 0
-  , counterUnplug = 0;
+var counterPlug = 0,
+    counterUnplug = 0;
 
 deviceloader.on('unplug', function(connection) {
 	counterUnplug++;

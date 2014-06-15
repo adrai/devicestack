@@ -14,6 +14,8 @@ util.inherits(MyDevice, Device);
 MyDevice.prototype.open = function(callback) {
   var self = this;
 
+  if (this.log) this.log('open device with id ' + this.id);
+
   setTimeout(function() {
     self.emit('open', callback);
     if (!self.connection && callback) callback();
@@ -28,6 +30,8 @@ MyDevice.prototype.open = function(callback) {
 
 MyDevice.prototype.close = function(callback, fire) {
   var self = this;
+
+  if (this.log) this.log('close device with id ' + this.id);
 
   setTimeout(function() {
     self.emit('close', callback);

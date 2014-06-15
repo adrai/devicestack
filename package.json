@@ -1,6 +1,6 @@
 {
   "name": "devicestack",
-  "version": "1.10.9",
+  "version": "1.10.10",
   "description": "This module helps you to represent a device and its protocol.",
   "private": false,
   "main": "index.js",
@@ -13,10 +13,11 @@
     "util": "./util"
   },
   "dependencies": {
+    "async": "=0.9.0",
+    "debug": "=1.0.2",
     "eventemitter2": "=0.4.13",
     "lodash": "=2.4.1",
     "node-uuid": "=1.4.1",
-    "async": "=0.9.0",
     "tv4": "=1.0.18"
   },
   "optionalDependencies": {
@@ -56,10 +57,12 @@
     "task"
   ],
   "author": "adrai",
-  "maintainers":[ {
-     "name": "adrai",
-     "email": "adriano@raiano.ch"
-  }],
+  "maintainers": [
+    {
+      "name": "adrai",
+      "email": "adriano@raiano.ch"
+    }
+  ],
   "homepage": "https://github.com/adrai/devicestack",
   "bugs": {
     "url": "https://github.com/adrai/devicestack/issues"

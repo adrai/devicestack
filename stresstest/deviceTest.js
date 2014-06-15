@@ -2,8 +2,8 @@ var Device = require('../test/fixture/device');
 
 var device = new Device();
 
-var counterOpen = 0
-  , counterClose = 0;
+var counterOpen = 0,
+    counterClose = 0;
 
 (function run() {
 	device.on('close', function() {
