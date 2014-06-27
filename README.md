@@ -14,7 +14,7 @@
 
 # Introduction
 
-[![Build Status](https://secure.travis-ci.org/adrai/devicestack.png)](http://travis-ci.org/adrai/devicestack)
+[![travis](https://img.shields.io/travis/adrai/devicestack.svg)](https://travis-ci.org/adrai/devicestack) [![npm](https://img.shields.io/npm/v/devicestack.svg)](https://npmjs.org/package/devicestack)
 
 This module helps you to represent a device and its protocol.
 
