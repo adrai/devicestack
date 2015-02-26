@@ -26,19 +26,20 @@ index.addAdditionalFormatForValidationSchemas = function(ref, fn) {
   tv4.addFormat(ref, fn);
 };
 
-try {
-  index.SerialDevice = require('./lib/serial/device');
-  index.SerialDeviceLoader = require('./lib/serial/deviceloader');
-  index.EventedSerialDeviceLoader = require('./lib/serial/eventeddeviceloader');
-  index.SerialDeviceGuider = require('./lib/serial/deviceguider');
-} catch(e) {
-  console.log(e.message);
-}
 
 try {
   index.FtdiDevice = require('./lib/ftdi/device');
   index.FtdiDeviceLoader = require('./lib/ftdi/deviceloader');
   index.EventedFtdiDeviceLoader = require('./lib/ftdi/eventeddeviceloader');
+} catch(e) {
+  console.log(e.message);
+}
+
+try {
+  index.SerialDevice = require('./lib/serial/device');
+  index.SerialDeviceLoader = require('./lib/serial/deviceloader');
+  index.EventedSerialDeviceLoader = require('./lib/serial/eventeddeviceloader');
+  index.SerialDeviceGuider = require('./lib/serial/deviceguider');
 } catch(e) {
   console.log(e.message);
 }
