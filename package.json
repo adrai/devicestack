@@ -13,17 +13,17 @@
     "util": "./util"
   },
   "dependencies": {
-    "async": "=0.9.0",
-    "debug": "=1.0.2",
-    "eventemitter2": "=0.4.13",
-    "lodash": "=2.4.1",
-    "node-uuid": "=1.4.1",
-    "tv4": "=1.0.18"
+    "async": "=1.0.0",
+    "debug": "=2.2.0",
+    "eventemitter2": "=0.4.14",
+    "lodash": "=3.9.3",
+    "node-uuid": "=1.4.3",
+    "tv4": "=1.1.9"
   },
   "optionalDependencies": {
-    "serialport": "=1.5.0",
+    "serialport": "=1.7.1",
     "ftdi": "=1.1.0",
-    "usb-detection": "=1.0.3",
+    "usb-detection": "=1.1.0",
     "pm-notify": "=1.0.2"
   },
   "devDependencies": {

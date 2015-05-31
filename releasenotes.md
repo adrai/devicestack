@@ -1,3 +1,6 @@
+#### v1.10.11
+- update some deps
+
 #### v1.10.10
 - added log fallback to [debug](https://github.com/visionmedia/debug)
 
